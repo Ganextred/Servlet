@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <link rel="stylesheet" href="../static/css/login.css">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+<body>
+
+<!--header start-->
+<header class="header">
+    <div sec:authorize="hasAuthority('ADMIN')">
+        <h2 > <a href="/admin/adminPanel" class="tbtn"  ><p th:text="#{ADMIN}" style="position: relative; top: -4px;"/> </a></h2>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <form  th:action="@{/logout}" method="post"> <input type="image" class="hbtn"  src="../static/img/logout.png" alt="logout"> </form>
+    </div>
+    <div class="lang_buttons">
+        <input type="image" onclick="swap_len()" class="hbtn" src="../static/img/lang.png" alt="lang">
+        <script>
+            function swap_len(){$.get('/lang',function (data){location.reload()})}
+        </script>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <form  th:action="@{/account}" method="get"> <input type="image" class="hbtn"  src="../static/img/account.png" alt="account"> </form>
+    </div>
+</header>
+<!--header end-->
+
+<div>
+    <form th:action="@{'/editUser'+${user.getId()}}" method="post">
+        <input name="username" th:type="text" th:value="${user.getUsername()}">
+        <label th:each="role : ${existingRoles}" >
+            <input th:if="${role.name() != 'USER'}" type = "checkbox"  th:text="${role}"
+                   th:checked="${user.getRoles().contains(role)}" >
+        </label>
+        <button type="submit" th:text="#{save}"></button>
+    </form>
+</div>
+</body>
+</html>

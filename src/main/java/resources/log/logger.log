@@ -1,0 +1,1363 @@
+2022-02-05 22:26:45 INFO  RegisterController:37 - welcome on reg page 
+2022-02-06 14:14:03 INFO  RegisterController:58 - new user was registered, username: Rapiryse1dsafad
+2022-02-06 21:27:22 INFO  RegisterController:57 - new user was registered, username: user
+2022-02-07 00:18:39 INFO  RegisterController:57 - new user was registered, username: user
+2022-02-07 00:35:00 INFO  RegisterController:57 - new user was registered, username: user
+2022-02-07 13:41:05 WARN  ApartmentManager:57 - ApartmentManager.makeDateValid got unparsed date
+java.time.format.DateTimeParseException: Text '' could not be parsed at index 0
+	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2052)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1954)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:430)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:415)
+	at com.example.luxuryhotel.model.service.ApartmentManager.makeDateValid(ApartmentManager.java:49)
+	at com.example.luxuryhotel.contrloller.ApartmentsController.applySort(ApartmentsController.java:48)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:219)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:213)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:132)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-02-07 13:43:31 WARN  ApartmentManager:57 - ApartmentManager.makeDateValid got unparsed date
+java.time.format.DateTimeParseException: Text '' could not be parsed at index 0
+	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2052)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1954)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:430)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:415)
+	at com.example.luxuryhotel.model.service.ApartmentManager.makeDateValid(ApartmentManager.java:49)
+	at com.example.luxuryhotel.contrloller.ApartmentsController.applySort(ApartmentsController.java:48)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:219)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:213)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:132)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-02-07 13:43:34 WARN  ApartmentManager:57 - ApartmentManager.makeDateValid got unparsed date
+java.time.format.DateTimeParseException: Text '' could not be parsed at index 0
+	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2052)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1954)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:430)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:415)
+	at com.example.luxuryhotel.model.service.ApartmentManager.makeDateValid(ApartmentManager.java:49)
+	at com.example.luxuryhotel.contrloller.ApartmentsController.applySort(ApartmentsController.java:48)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:219)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:213)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:132)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-02-07 13:45:11 DEBUG ApartmentManager:55 - ApartmentManager.makeDateValid got unordered day
+2022-02-07 13:50:38 WARN  ApartmentManager:57 - ApartmentManager.makeDateValid got unparsed date
+java.time.format.DateTimeParseException: Text '' could not be parsed at index 0
+	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2052)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1954)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:430)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:415)
+	at com.example.luxuryhotel.model.service.ApartmentManager.makeDateValid(ApartmentManager.java:49)
+	at com.example.luxuryhotel.contrloller.ApartmentsController.applySort(ApartmentsController.java:48)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:219)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:213)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:132)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-02-07 14:19:17 WARN  ApartmentManager:68 - ApartmentManager.makeDateValid got null arrival day
+2022-02-07 14:19:17 WARN  ApartmentManager:72 - ApartmentManager.makeDateValid got null end day
+2022-02-07 14:19:33 WARN  ApartmentManager:82 - ApartmentManager.makeDateValid got unparsed date
+java.time.format.DateTimeParseException: Text '' could not be parsed at index 0
+	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2052)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1954)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:430)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:415)
+	at com.example.luxuryhotel.model.service.ApartmentManager$TimeInterval.getValidInterval(ApartmentManager.java:75)
+	at com.example.luxuryhotel.model.service.ApartmentManager.getSortedApartments(ApartmentManager.java:28)
+	at com.example.luxuryhotel.contrloller.ApartmentsController.applySort(ApartmentsController.java:46)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:219)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:213)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:132)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-02-07 14:20:12 WARN  ApartmentManager:82 - ApartmentManager.makeDateValid got unparsed date
+java.time.format.DateTimeParseException: Text '' could not be parsed at index 0
+	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2052)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1954)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:430)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:415)
+	at com.example.luxuryhotel.model.service.ApartmentManager$TimeInterval.getValidInterval(ApartmentManager.java:75)
+	at com.example.luxuryhotel.model.service.ApartmentManager.getSortedApartments(ApartmentManager.java:28)
+	at com.example.luxuryhotel.contrloller.ApartmentsController.applySort(ApartmentsController.java:46)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:219)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:213)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:132)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-02-07 14:20:57 WARN  ApartmentManager:82 - ApartmentManager.makeDateValid got unparsed date
+java.time.format.DateTimeParseException: Text '' could not be parsed at index 0
+	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2052)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1954)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:430)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:415)
+	at com.example.luxuryhotel.model.service.ApartmentManager$TimeInterval.getValidInterval(ApartmentManager.java:75)
+	at com.example.luxuryhotel.model.service.ApartmentManager.getSortedApartments(ApartmentManager.java:28)
+	at com.example.luxuryhotel.contrloller.ApartmentsController.applySort(ApartmentsController.java:46)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:219)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:213)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:132)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-02-07 14:21:39 WARN  ApartmentManager:70 - ApartmentManager.makeDateValid got null arrival day
+2022-02-07 14:21:39 WARN  ApartmentManager:74 - ApartmentManager.makeDateValid got null end day
+2022-02-07 14:21:47 WARN  ApartmentManager:70 - ApartmentManager.makeDateValid got null arrival day
+2022-02-07 14:21:47 WARN  ApartmentManager:74 - ApartmentManager.makeDateValid got null end day
+2022-02-07 14:21:56 WARN  ApartmentManager:84 - ApartmentManager.makeDateValid got unparsed date
+java.time.format.DateTimeParseException: Text '' could not be parsed at index 0
+	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2052)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1954)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:430)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:415)
+	at com.example.luxuryhotel.model.service.ApartmentManager$TimeInterval.getValidInterval(ApartmentManager.java:77)
+	at com.example.luxuryhotel.model.service.ApartmentManager.getSortedApartments(ApartmentManager.java:28)
+	at com.example.luxuryhotel.contrloller.ApartmentsController.applySort(ApartmentsController.java:46)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:219)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:213)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:132)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-02-07 14:23:54 WARN  ApartmentManager:68 - ApartmentManager.makeDateValid got null arrival day
+2022-02-07 14:23:54 WARN  ApartmentManager:72 - ApartmentManager.makeDateValid got null end day
+2022-02-07 14:24:04 WARN  ApartmentManager:68 - ApartmentManager.makeDateValid got null arrival day
+2022-02-07 14:24:16 WARN  ApartmentManager:72 - ApartmentManager.makeDateValid got null end day
+2022-02-07 15:03:36 WARN  ApartmentManager:74 - ApartmentManager.makeDateValid got null arrival day
+2022-02-07 15:03:36 WARN  ApartmentManager:78 - ApartmentManager.makeDateValid got null end day
+2022-02-07 15:06:23 WARN  ApartmentManager:74 - ApartmentManager.makeDateValid got null arrival day
+2022-02-07 15:06:23 WARN  ApartmentManager:78 - ApartmentManager.makeDateValid got null end day
+2022-02-07 15:06:28 WARN  ApartmentManager:74 - ApartmentManager.makeDateValid got null arrival day
+2022-02-07 15:06:28 WARN  ApartmentManager:78 - ApartmentManager.makeDateValid got null end day
+2022-02-07 15:06:33 WARN  ApartmentManager:74 - ApartmentManager.makeDateValid got null arrival day
+2022-02-07 15:06:33 WARN  ApartmentManager:78 - ApartmentManager.makeDateValid got null end day
+2022-02-07 16:06:53 WARN  ApartmentManager:74 - ApartmentManager.makeDateValid got null arrival day
+2022-02-07 16:06:53 WARN  ApartmentManager:78 - ApartmentManager.makeDateValid got null end day
+2022-02-07 16:07:03 WARN  ApartmentManager:74 - ApartmentManager.makeDateValid got null arrival day
+2022-02-07 16:07:03 WARN  ApartmentManager:78 - ApartmentManager.makeDateValid got null end day
+2022-02-07 20:21:20 INFO  RegisterController:53 - new user was registered, username: user
+2022-02-08 13:05:09 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 13:06:16 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 13:08:45 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 13:11:18 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 13:16:50 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 13:17:22 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 13:22:22 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 13:33:15 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 13:35:31 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:07:24 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:09:14 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:15:09 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:21:01 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:21:27 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:22:00 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:22:15 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:22:45 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:23:27 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:30:01 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:32:16 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:37:30 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:38:30 WARN  Validator:76 - Validator got null(or 0length) arrival or end day
+2022-02-08 14:41:34 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:43:42 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:56:25 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 14:59:38 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:03:29 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:06:04 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:06:28 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:06:56 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:07:24 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:27:31 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:29:23 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:30:19 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:41:45 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:42:45 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:45:38 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:46:12 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:47:29 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:48:30 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:49:57 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:52:18 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:53:01 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:57:22 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:57:40 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:58:00 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 15:58:54 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 16:01:49 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 16:02:08 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 16:03:47 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 16:04:45 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 16:05:48 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 16:07:22 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 16:07:47 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 16:09:43 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 16:11:18 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 16:36:42 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 16:37:54 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 16:38:14 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 16:40:31 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 16:58:56 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:00:41 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:01:53 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:34:33 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:36:34 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:38:01 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:41:31 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:42:23 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:44:27 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:44:50 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:46:01 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:47:02 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:49:19 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:51:23 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:57:43 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:58:18 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 17:58:55 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 18:00:02 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 18:02:31 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 18:40:31 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 18:46:14 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 18:48:07 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 18:48:49 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 18:49:05 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 18:49:58 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 18:50:53 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 18:52:19 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 18:53:10 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 18:53:29 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 18:55:17 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 18:57:39 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 19:00:54 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 19:01:57 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 19:03:56 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 19:04:22 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 19:06:33 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 19:19:39 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 19:22:25 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 20:15:13 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 20:16:17 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 20:20:20 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 20:26:19 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 20:27:02 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 20:28:52 INFO  ApartmentManager:27 - Start db initialization
+2022-02-08 20:29:14 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 10:33:39 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 10:57:01 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 15:13:17 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 15:21:58 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 15:22:51 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 15:43:45 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 15:45:51 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 15:48:46 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 15:50:12 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 15:50:33 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 15:51:24 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 15:51:38 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 15:59:34 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 16:17:56 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 16:22:56 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 16:32:56 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 16:35:28 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 16:36:36 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 16:39:04 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 16:40:51 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 16:41:21 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:06:07 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:08:03 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:09:44 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:11:40 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:12:01 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:12:24 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:12:58 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:13:41 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:14:12 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:14:34 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:15:02 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:15:44 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:16:05 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:16:27 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:16:46 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:17:38 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:18:12 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:18:37 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:19:18 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:19:53 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:20:18 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:20:53 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:21:45 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:22:02 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:22:20 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:23:00 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:24:01 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:24:11 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:26:08 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:27:26 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:29:06 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:29:25 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:29:48 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:30:11 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:30:53 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:31:29 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:32:08 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:32:37 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:37:14 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:38:19 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:39:36 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:41:43 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:42:30 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:43:50 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:44:53 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:45:37 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:47:53 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:49:34 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:51:14 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:52:48 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:58:27 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:59:12 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 17:59:31 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 19:59:46 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 20:04:34 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 20:39:39 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 20:44:25 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 20:47:12 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 20:47:55 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 20:50:20 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 20:50:29 WARN  Validator:77 - Validator got null(or 0length) arrival or end day
+2022-02-10 20:50:31 WARN  Validator:77 - Validator got null(or 0length) arrival or end day
+2022-02-10 20:50:32 WARN  Validator:77 - Validator got null(or 0length) arrival or end day
+2022-02-10 20:50:32 WARN  Validator:77 - Validator got null(or 0length) arrival or end day
+2022-02-10 20:52:17 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 20:52:19 WARN  Validator:77 - Validator got null(or 0length) arrival or end day
+2022-02-10 20:53:02 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 20:53:06 WARN  Validator:78 - Validator got null(or 0length) arrival or end day
+2022-02-10 20:53:41 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 20:53:47 WARN  Validator:78 - Validator got null(or 0length) arrival or end day
+2022-02-10 20:54:19 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:03:39 WARN  Validator:77 - Validator got null(or 0length) arrival or end day
+2022-02-10 21:03:44 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:07:16 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:09:35 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:15:16 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:15:19 WARN  Validator:58 - validator got null apartment
+2022-02-10 21:16:08 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:16:12 WARN  Validator:58 - validator got null apartment
+2022-02-10 21:20:27 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:20:30 WARN  Validator:58 - validator got null apartment
+2022-02-10 21:20:53 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:21:04 WARN  Validator:58 - validator got null apartment
+2022-02-10 21:25:56 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:28:20 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:29:05 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:34:20 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:35:34 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:40:49 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:42:15 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:43:19 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:43:41 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:44:03 ERROR ApartmentManager:114 - Unexpected behavior, answerRequest didnt manage to find proper book status
+2022-02-10 21:46:41 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:46:46 ERROR ApartmentManager:114 - Unexpected behavior, answerRequest didnt manage to find proper book status
+2022-02-10 21:49:14 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 21:52:13 ERROR ApartmentManager:114 - Unexpected behavior, answerRequest didnt manage to find proper book status
+2022-02-10 22:04:13 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 22:08:33 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 22:11:13 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 22:12:32 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 22:16:28 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 22:18:38 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 22:19:44 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 22:19:58 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 22:37:20 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 22:56:26 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 22:56:56 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 22:58:06 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 22:59:28 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 22:59:48 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 23:00:03 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 23:00:18 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 23:00:39 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 23:01:02 INFO  ApartmentManager:27 - Start db initialization
+2022-02-10 23:01:22 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 00:41:26 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 16:41:38 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 16:50:16 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 16:51:17 DEBUG Validator:129 - Arrival day cant bee yesterday
+2022-02-11 17:03:11 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 17:06:09 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 17:27:11 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 17:31:51 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 17:32:20 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 17:33:49 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 17:34:56 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 17:35:18 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 17:39:11 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 17:51:03 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 17:56:54 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 17:57:44 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 18:02:03 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 18:05:10 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 18:07:23 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 18:15:14 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 18:25:21 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 19:12:38 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 19:18:57 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 19:27:03 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 19:28:36 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 19:28:55 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 19:29:58 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 19:34:25 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 19:37:01 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 19:37:37 INFO  ApartmentManager:27 - Start db initialization
+2022-02-11 19:51:00 INFO  ApartmentManager:30 - Start db initialization
+2022-02-11 19:53:35 INFO  ApartmentManager:30 - Start db initialization
+2022-02-11 19:54:19 INFO  ApartmentManager:30 - Start db initialization
+2022-02-11 19:54:43 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 13:48:17 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 13:52:10 DEBUG Validator:129 - Arrival day cant bee yesterday
+2022-02-12 13:57:01 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 13:57:31 DEBUG Validator:129 - Arrival day cant bee yesterday
+2022-02-12 13:57:39 DEBUG Validator:129 - Arrival day cant bee yesterday
+2022-02-12 13:57:55 DEBUG Validator:129 - Arrival day cant bee yesterday
+2022-02-12 13:58:33 DEBUG Validator:129 - Arrival day cant bee yesterday
+2022-02-12 14:00:01 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 14:00:35 DEBUG Validator:129 - Arrival day cant bee yesterday
+2022-02-12 14:04:04 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 14:05:19 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 14:06:06 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 14:07:14 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 14:08:20 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 14:09:02 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 14:39:43 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 14:40:29 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 14:42:32 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 14:43:16 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 14:43:52 DEBUG Validator:129 - Arrival day cant bee yesterday
+2022-02-12 14:45:38 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 14:47:01 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 14:58:53 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 15:00:42 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 15:03:49 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 15:08:06 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 15:08:50 DEBUG Validator:129 - Arrival day cant bee yesterday
+2022-02-12 15:09:06 DEBUG Validator:129 - Arrival day cant bee yesterday
+2022-02-12 15:10:05 DEBUG Validator:129 - Arrival day cant bee yesterday
+2022-02-12 15:11:11 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 15:12:21 DEBUG Validator:129 - Arrival day cant bee yesterday
+2022-02-12 15:14:11 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 15:15:23 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:11:48 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:12:42 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:13:35 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:13:52 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:15:55 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:17:02 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:17:21 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:18:42 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:27:57 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:28:21 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:28:36 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:30:30 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:30:46 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:33:01 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:33:23 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:34:14 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:34:21 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:35:56 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:39:28 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:42:02 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:42:03 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:42:11 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:43:06 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:43:24 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:44:03 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:44:18 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:46:11 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:48:48 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:49:46 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:50:21 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:50:57 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:54:06 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 16:54:30 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 17:04:05 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 17:06:42 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 17:25:53 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 17:27:23 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 17:28:29 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 17:29:28 DEBUG Validator:129 - Arrival day cant bee yesterday
+2022-02-12 17:44:39 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 17:44:44 DEBUG Validator:103 - Arrival day cant bee yesterday
+2022-02-12 17:44:49 WARN  Validator:107 - Validator got unparsed arrival or end day
+2022-02-12 17:55:38 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 17:58:03 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 17:58:40 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 18:00:09 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 18:02:30 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 18:03:23 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 18:04:02 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 18:06:07 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 18:15:33 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 18:19:02 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 18:21:34 INFO  ApartmentManager:30 - Start db initialization
+2022-02-12 18:22:51 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 15:47:45 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 15:50:34 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 15:53:08 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 15:53:57 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:16:29 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:17:28 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:18:45 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:20:24 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:21:06 INFO  RegisterController:53 - new user was registered, username: user2
+2022-02-13 16:23:37 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:25:28 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:26:22 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:26:37 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:27:06 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:29:16 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:30:42 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:32:33 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:32:42 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:33:19 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:35:47 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:37:17 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:46:34 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:47:20 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:48:42 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:53:54 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:54:32 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:54:56 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:55:20 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:56:27 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 16:57:20 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 17:05:56 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 17:06:49 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 17:08:12 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 17:09:23 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 17:10:15 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 17:22:44 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 17:25:47 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 17:26:18 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 17:26:49 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 17:27:54 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 17:29:21 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 17:30:02 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 17:30:39 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 17:31:02 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:12:30 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:13:39 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:15:53 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:17:07 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:18:34 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:20:42 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:22:41 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:27:50 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:28:53 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:29:05 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:31:06 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:33:00 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:35:45 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:39:21 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:41:45 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:42:34 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:47:26 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:49:38 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:54:00 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:55:51 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:56:09 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:59:05 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 18:59:47 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 19:01:11 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 19:02:04 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 19:02:43 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 19:05:40 INFO  ApartmentManager:30 - Start db initialization
+2022-02-13 19:08:54 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 12:48:54 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 12:54:32 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 13:01:38 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 13:19:45 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 13:24:37 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 13:24:59 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 13:28:18 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 13:28:37 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 13:32:10 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 13:33:23 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 13:40:36 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 13:49:59 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 13:57:08 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 13:57:43 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 13:58:13 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 14:18:39 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 14:20:31 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 14:30:42 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:20:19 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:22:06 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:25:43 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:28:26 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:28:48 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:31:25 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:32:04 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:33:41 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:36:15 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:36:34 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:38:46 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:39:37 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:40:11 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:41:17 INFO  RegisterController:53 - new user was registered, username: user1
+2022-02-14 15:44:08 INFO  RegisterController:53 - new user was registered, username: admin
+2022-02-14 15:46:21 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:46:40 INFO  RegisterController:53 - new user was registered, username: user
+2022-02-14 15:48:22 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:48:41 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:48:57 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:57:50 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 15:58:31 INFO  RegisterController:53 - new user was registered, username: admin
+2022-02-14 16:01:39 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 16:02:44 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 16:04:09 INFO  RegisterController:53 - new user was registered, username: user123
+2022-02-14 16:08:04 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 16:08:41 INFO  RegisterController:53 - new user was registered, username: NewUser
+2022-02-14 16:10:59 INFO  RegisterController:53 - new user was registered, username: Ilyarotan1
+2022-02-14 16:14:00 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 16:26:55 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 16:27:55 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 16:37:14 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 16:42:16 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 16:42:24 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 16:47:35 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 16:53:11 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 16:54:12 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 16:56:01 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 17:01:11 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 17:08:30 INFO  RegisterController:53 - new user was registered, username: adsadsadsdasdas
+2022-02-14 17:23:03 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 17:23:56 INFO  RegisterController:53 - new user was registered, username: user
+2022-02-14 17:26:52 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 17:27:58 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 17:30:40 INFO  RegisterController:53 - new user was registered, username: admin
+2022-02-14 17:31:11 DEBUG Validator:115 - Arrival day cant bee yesterday
+2022-02-14 17:32:39 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 17:38:02 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 17:39:20 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 17:40:03 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 17:42:25 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 17:44:32 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 17:45:51 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 17:46:23 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 17:48:08 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 17:48:22 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 18:06:03 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 18:06:14 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 18:07:17 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 18:22:23 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 18:28:32 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 18:47:01 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 18:51:25 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 18:53:02 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 18:53:38 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 18:59:19 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 18:59:25 WARN  ApartmentManager:222 - error sending email
+2022-02-14 18:59:47 WARN  ApartmentManager:222 - error sending email
+2022-02-14 19:03:02 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 19:03:40 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 19:04:13 WARN  ApartmentManager:222 - error sending email
+2022-02-14 19:08:42 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 19:09:02 WARN  ApartmentManager:222 - error sending email
+2022-02-14 19:16:04 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 19:16:26 WARN  ApartmentManager:223 - error sending email
+2022-02-14 19:18:06 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 19:18:43 WARN  ApartmentManager:223 - error sending email
+2022-02-14 19:42:09 INFO  ApartmentManager:30 - Start db initialization
+2022-02-14 19:46:16 WARN  ApartmentManager:226 - error sending email
+2022-02-15 14:55:49 INFO  ApartmentManager:30 - Start db initialization
+2022-02-15 14:56:59 INFO  RegisterController:53 - new user was registered, username: Rapirys
+2022-02-15 14:59:54 INFO  ApartmentManager:30 - Start db initialization
+2022-02-16 16:40:38 INFO  ApartmentManager:30 - Start db initialization
+2022-02-16 16:53:23 INFO  ApartmentManager:30 - Start db initialization
+2022-02-16 16:54:59 INFO  ApartmentManager:30 - Start db initialization
+2022-02-16 16:55:20 INFO  ApartmentManager:30 - Start db initialization
+2022-02-16 16:56:22 INFO  ApartmentManager:30 - Start db initialization
+2022-02-16 16:57:45 INFO  ApartmentManager:30 - Start db initialization
+2022-02-16 16:58:57 INFO  ApartmentManager:30 - Start db initialization
+2022-02-16 17:32:32 INFO  ApartmentManager:30 - Start db initialization
+2022-02-16 17:34:59 INFO  ApartmentManager:30 - Start db initialization
+2022-02-16 17:41:26 INFO  ApartmentManager:30 - Start db initialization
+2022-02-16 17:48:33 INFO  ApartmentManager:30 - Start db initialization
+2022-02-16 18:12:07 INFO  ApartmentManager:30 - Start db initialization
+2022-02-16 18:12:09 INFO  ApartmentManager:30 - Start db initialization
+2022-02-16 18:12:14 INFO  ApartmentManager:30 - Start db initialization
+2022-02-16 18:13:29 INFO  ApartmentManager:30 - Start db initialization
+2022-02-17 15:38:23 WARN  ApartmentManager:216 - ApartmentManager.makeDateValid got null arrival day
+2022-02-17 15:38:23 WARN  ApartmentManager:220 - ApartmentManager.makeDateValid got null end day
+2022-02-17 15:58:40 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 16:00:52 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 16:02:07 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 16:02:29 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 16:02:40 WARN  ApartmentManager:236 - ApartmentManager.makeDateValid got null arrival day
+2022-02-17 16:02:40 WARN  ApartmentManager:240 - ApartmentManager.makeDateValid got null end day
+2022-02-17 16:02:43 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 16:02:54 WARN  ApartmentManager:236 - ApartmentManager.makeDateValid got null arrival day
+2022-02-17 16:02:54 WARN  ApartmentManager:240 - ApartmentManager.makeDateValid got null end day
+2022-02-17 16:02:57 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 17:15:25 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 17:23:13 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 17:23:22 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 17:32:42 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 17:33:04 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 17:38:49 WARN  ApartmentManager:236 - ApartmentManager.makeDateValid got null arrival day
+2022-02-17 17:38:49 WARN  ApartmentManager:240 - ApartmentManager.makeDateValid got null end day
+2022-02-17 17:38:52 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 17:39:53 WARN  ApartmentManager:236 - ApartmentManager.makeDateValid got null arrival day
+2022-02-17 17:39:53 WARN  ApartmentManager:240 - ApartmentManager.makeDateValid got null end day
+2022-02-17 17:39:56 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 17:40:36 WARN  ApartmentManager:236 - ApartmentManager.makeDateValid got null arrival day
+2022-02-17 17:40:36 WARN  ApartmentManager:240 - ApartmentManager.makeDateValid got null end day
+2022-02-17 17:40:39 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 17:44:59 WARN  ApartmentManager:236 - ApartmentManager.makeDateValid got null arrival day
+2022-02-17 17:44:59 WARN  ApartmentManager:240 - ApartmentManager.makeDateValid got null end day
+2022-02-17 17:45:02 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 17:47:47 WARN  ApartmentManager:236 - ApartmentManager.makeDateValid got null arrival day
+2022-02-17 17:47:47 WARN  ApartmentManager:240 - ApartmentManager.makeDateValid got null end day
+2022-02-17 17:47:51 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 17:49:11 WARN  ApartmentManager:236 - ApartmentManager.makeDateValid got null arrival day
+2022-02-17 17:49:11 WARN  ApartmentManager:240 - ApartmentManager.makeDateValid got null end day
+2022-02-17 17:49:14 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 17:50:42 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 17:53:52 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 17:54:04 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 18:01:57 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 18:02:30 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 18:03:18 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 18:04:23 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 18:05:05 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 18:05:41 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 18:06:37 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 18:08:01 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 18:08:56 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 18:11:37 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 18:11:48 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 18:12:09 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 18:12:15 INFO  ApartmentManager:27 - Start db initialization
+2022-02-17 18:15:48 INFO  ApartmentManager:27 - Start db initialization
