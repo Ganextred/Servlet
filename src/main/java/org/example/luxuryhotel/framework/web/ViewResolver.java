@@ -5,11 +5,16 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 
 public class ViewResolver {
-    static String processView(String view,Model model){
+    static void processView(String view,Model model) throws ServletException, IOException {
+        model.merge();
         if (view.startsWith("redirect:")){
             String link = view.substring(9);
-            RequestDispatcher dispatcher = model.request.getRequestDispatcher(link);
-            dispatcher.forward();
+            model.response.sendRedirect(link);
+        }else {
+            view="WEB-INF/"+view;
+            RequestDispatcher dispatcher = model.request.getRequestDispatcher(view);
+            dispatcher.forward(model.request, model.response);
         }
     }
+
 }

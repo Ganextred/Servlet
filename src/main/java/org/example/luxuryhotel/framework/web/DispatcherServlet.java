@@ -6,20 +6,18 @@ import org.example.luxuryhotel.framework.Util.Pair;
 import org.example.luxuryhotel.framework.annotation.RequestParam;
 import org.example.luxuryhotel.framework.exaptions.NullParamException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
 
 import static org.example.luxuryhotel.framework.Util.Converter.convert;
 import static org.example.luxuryhotel.framework.web.ViewResolver.processView;
@@ -40,7 +38,18 @@ public class DispatcherServlet extends HttpServlet {
         Pair<Method,Object> pair=handlerMapping.getGet(path);
         Model model=new Model(request, response);
         String view = doRequest(pair, model);
-
+        try {
+            processView(view, model);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void doPost(HttpServletRequest request, HttpServletResponse response) {
+//        Pair<Method,Object> pair=handlerMapping.getPost(request);
+//        Model model=new Model(request, response);
+//        String view = doRequest(pair, model);
     }
 
     private String doRequest(Pair<Method, Object> pair, Model model) {

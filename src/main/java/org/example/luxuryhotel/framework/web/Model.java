@@ -17,7 +17,19 @@ public class Model {
     }
 
     public Object getAttributes(String name) {
-        return attributes.get(name);
+        if (attributes.containsKey(name))
+           return attributes.get(name);
+        return request.getParameter(name);
+    }
+
+    public void setAttributes(String name, Object o) {
+        attributes.put(name, o);
+    }
+
+    public void merge(){
+        for(Map.Entry<String, Object> entry: attributes.entrySet()){
+            request.setAttribute(entry.getKey(), entry.getValue());
+        }
     }
 
 }

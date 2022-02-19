@@ -10,6 +10,16 @@ public final class Pair<S, T> {
         this.second = second;
     }
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
     public static <S, T> Pair<S, T> of(S first, T second) {
         return new Pair(first, second);
     }
