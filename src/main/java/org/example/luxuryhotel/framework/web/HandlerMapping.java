@@ -1,22 +1,26 @@
 package org.example.luxuryhotel.framework.web;
 
+import org.apache.log4j.Logger;
+import org.example.luxuryhotel.application.LuxuryHotelApplication;
 import org.example.luxuryhotel.framework.AppContext;
 import org.example.luxuryhotel.framework.annotation.Controller;
 import org.example.luxuryhotel.framework.annotation.GetMapping;
 import org.example.luxuryhotel.framework.Util.Pair;
 import org.example.luxuryhotel.framework.annotation.PostMapping;
+import org.example.luxuryhotel.framework.exaptions.ControllerNotExist;
 import org.reflections.Reflections;
 
 import javax.servlet.http.HttpServletRequest;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 //Синглтон
 public class HandlerMapping {
-    public static Map<String, Pair<Method, Object>> getRequests;
-    public static Map<String, Pair<Method, Object>> postRequests;
+    private final static Logger logger = Logger.getLogger(HandlerMapping.class);
+    public static Map<String, Pair<Method, Object>> getRequests = new HashMap<>();
+    public static Map<String, Pair<Method, Object>> postRequests = new HashMap<>();
     public static HandlerMapping map = new HandlerMapping();
 
     public static HandlerMapping getInstance() {
@@ -25,10 +29,11 @@ public class HandlerMapping {
 
     private HandlerMapping() {
         System.out.println("Начало сбора методов");
-        Reflections reflections = new Reflections(AppContext.appClass.getPackage().getName());
+        Reflections reflections = new Reflections(LuxuryHotelApplication.class.getPackage().getName());
         Set<Class<?>> controllers = reflections.getTypesAnnotatedWith(Controller.class);
-        System.out.println(controllers);
+        System.out.println(controllers.toString() + "Обнаруженные контроллеры");
         initGet(controllers);
+        initPost(controllers);
     }
 
     private void initGet(Set<Class<?>> controllers) {
@@ -61,18 +66,34 @@ public class HandlerMapping {
     }
 
     public Pair<Method,Object> getGet(String path){
+        if (!getRequests.containsKey(path)) {
+            logger.error("Controller fo path: "+ path +" not Exist");
+            throw new ControllerNotExist("Controller fo path: "+ path +" not Exist");
+        }
         return getRequests.get(path);
     }
     public Pair<Method,Object> getGet(HttpServletRequest request){
-        String path=request.getParameter("action");
+        String path=request.getRequestURL().toString();
+        if (!getRequests.containsKey(path)) {
+            logger.error("Controller fo path: "+ path +" not Exist");
+            throw new ControllerNotExist("Controller fo path: "+ path +" not Exist");
+        }
         return getRequests.get(path);
     }
     public Pair<Method,Object> getPost(String path){
-        return getRequests.get(path);
+        if (!postRequests.containsKey(path)) {
+            logger.error("Controller fo path: "+ path +" not Exist");
+            throw new ControllerNotExist("Controller fo path: "+ path +" not Exist");
+        }
+        return postRequests.get(path);
     }
     public Pair<Method,Object> getPost(HttpServletRequest request){
-        String path=request.getParameter("action");
-        return getRequests.get(path);
+        String path=request.getRequestURL().toString();
+        if (!postRequests.containsKey(path)) {
+            logger.error("Controller fo path: "+ path +" not Exist");
+            throw new ControllerNotExist("Controller fo path: "+ path +" not Exist");
+        }
+        return postRequests.get(path);
     }
 
 }

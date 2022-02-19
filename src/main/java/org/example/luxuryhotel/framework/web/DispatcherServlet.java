@@ -8,6 +8,7 @@ import org.example.luxuryhotel.framework.exaptions.NullParamException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,12 +22,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.example.luxuryhotel.framework.Util.Converter.convert;
+import static org.example.luxuryhotel.framework.web.ViewResolver.processView;
 
-/**
- * Simple class that extends {@link HttpServlet}.
- *
- * @author Eugene Suleimanov
- */
+@WebServlet("/test")
 public class DispatcherServlet extends HttpServlet {
     private final static Logger logger = Logger.getLogger(DispatcherServlet.class);
 
@@ -38,7 +36,8 @@ public class DispatcherServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
-        Pair<Method,Object> pair=handlerMapping.getGet(request);
+        String path=request.getRequestURI();
+        Pair<Method,Object> pair=handlerMapping.getGet(path);
         Model model=new Model(request, response);
         String view = doRequest(pair, model);
 
@@ -49,7 +48,7 @@ public class DispatcherServlet extends HttpServlet {
         Object controller= pair.getSecond();
         Object[] parameters= injectParameters(method, model);
         try {
-            return (String) method.invoke(controller,parameters);
+            return (String) method.invoke(controller,(Object[])parameters);
         } catch (IllegalAccessException | InvocationTargetException e) {
             logger.error("Cant invoke request to controller: "+ pair.getSecond());
             e.printStackTrace();
@@ -69,11 +68,11 @@ public class DispatcherServlet extends HttpServlet {
                     for (int i = 0; i < data.length; i++){
                         data[i] = checkDefaultAndRequired(rp,data[i]);
                     }
-                    result.add(convert(data,p.getClass()));
+                    result.add(convert(data,p.getType()));
                 }else {
                     String data = model.request.getParameter(name);
                     data = checkDefaultAndRequired(rp, data);
-                    result.add(convert(data,p.getClass()));
+                    result.add(convert(data,p.getType()));
                 }
             }
             if (p.getType().equals(Model.class))

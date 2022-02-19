@@ -32,11 +32,8 @@ public class Converter {
         }
         return null;
     }
-    public static Object[] convert(String[] parameters, Class<?> c){
-        List<Object> arr= new ArrayList<Object>();
-        for (String p : parameters){
-            arr.add(convert(p,c.getComponentType()));
-        }
-        return arr.toArray();
+    public static String[] convert(String[] parameters, Class<?> c){
+
+        return parameters;
     }
 }
