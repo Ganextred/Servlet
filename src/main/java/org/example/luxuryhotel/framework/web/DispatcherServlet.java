@@ -93,7 +93,6 @@ public class DispatcherServlet extends HttpServlet {
         }
         return result.toArray();
     }
-
     private String checkDefaultAndRequired(RequestParam rp, String data) {
         if (rp.required() && rp.defaultValue().equals("\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n") && data == null)
             throw new NullParamException();

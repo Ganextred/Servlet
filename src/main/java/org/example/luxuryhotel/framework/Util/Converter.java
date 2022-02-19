@@ -14,6 +14,11 @@ import java.util.List;
 public class Converter {
     private final static Logger logger = Logger.getLogger(Converter.class);
     public static Object convert(String p, Class<?> c){
+        if (p==null)
+            return null;
+        if (c.equals(Boolean.class)){
+            return Boolean.valueOf(p);
+        }
         if (c.equals(Integer.class)){
             return Integer.valueOf(p);
         }
