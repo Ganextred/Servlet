@@ -4,6 +4,8 @@ package org.example.luxuryhotel.framework.Util;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Converter {
     public static Object convert(String p, Class<?> c){
@@ -29,5 +31,12 @@ public class Converter {
             return Duration.parse(p);
         }
         return null;
+    }
+    public static Object[] convert(String[] parameters, Class<?> c){
+        List<Object> arr= new ArrayList<Object>();
+        for (String p : parameters){
+            arr.add(convert(p,c.getComponentType()));
+        }
+        return arr.toArray();
     }
 }

@@ -39,49 +39,59 @@ public class DispatcherServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
         Pair<Method,Object> pair=handlerMapping.getGet(request);
-        RedirectAttributes rA=new RedirectAttributes(request, response);
         Model model=new Model(request, response);
-        String view = doRequest(pair, rA, model);
-
+        String view = doRequest(pair, model);
 
     }
 
-    private String doRequest(Pair<Method, Object> pair, RedirectAttributes rA, Model model) {
+    private String doRequest(Pair<Method, Object> pair, Model model) {
         Method method = pair.getFirst();
         Object controller= pair.getSecond();
-        Object[] parameters= injectParameters(method, model, rA);
+        Object[] parameters= injectParameters(method, model);
         try {
             return (String) method.invoke(controller,parameters);
         } catch (IllegalAccessException | InvocationTargetException e) {
             logger.error("Cant invoke request to controller: "+ pair.getSecond());
             e.printStackTrace();
+            return "error";
         }
     }
 
-    private Object[] injectParameters(Method method, Model model, RedirectAttributes rA) {
+    private Object[] injectParameters(Method method, Model model) {
         List<Object> result= new ArrayList<Object>();
         Parameter[] parameter = method.getParameters();
         for (Parameter p:parameter){
             if (p.isAnnotationPresent(RequestParam.class)){
                 RequestParam rp = p.getAnnotation(RequestParam.class);
                 String name = rp.name();
-                String data = model.request.getParameter(name);
-                if (rp.required() && rp.defaultValue().equals("\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n") && data == null)
-                    throw new NullParamException();
-                if (!rp.defaultValue().equals("\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n") && data == null)
-                    data = rp.defaultValue();
-                result.add(convert(data,p.getClass()));
+                if (p.getType().isArray()){
+                    String[] data = model.request.getParameterValues(name);
+                    for (int i = 0; i < data.length; i++){
+                        data[i] = checkDefaultAndRequired(rp,data[i]);
+                    }
+                    result.add(convert(data,p.getClass()));
+                }else {
+                    String data = model.request.getParameter(name);
+                    data = checkDefaultAndRequired(rp, data);
+                    result.add(convert(data,p.getClass()));
+                }
             }
             if (p.getType().equals(Model.class))
                 result.add(model);
-            if (p.getType().equals(RedirectAttributes.class))
-                result.add(rA);
             if (p.getType().equals(HttpServletRequest.class))
                 result.add(model.response);
             if (p.getType().equals(HttpServletResponse.class))
                 result.add(model.request);
         }
         return result.toArray();
+    }
+
+    private String checkDefaultAndRequired(RequestParam rp, String data) {
+        if (rp.required() && rp.defaultValue().equals("\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n") && data == null)
+            throw new NullParamException();
+        if (!rp.defaultValue().equals("\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n") && data == null)
+            data = rp.defaultValue();
+        return data;
     }
 
     public void destroy() {}

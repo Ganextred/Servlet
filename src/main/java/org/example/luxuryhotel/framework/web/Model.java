@@ -15,4 +15,9 @@ public class Model {
         this.request = request;
         this.response = response;
     }
+
+    public Object getAttributes(String name) {
+        return attributes.get(name);
+    }
+
 }
