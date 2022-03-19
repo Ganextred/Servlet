@@ -22,7 +22,7 @@ public class Model {
         return request.getParameter(name);
     }
 
-    public void setAttributes(String name, Object o) {
+    public void addAttribute(String name, Object o) {
         attributes.put(name, o);
     }
 

@@ -1,0 +1,11 @@
+<%@ page import="org.example.luxuryhotel.application.jspUtil.Lang" %><%--
+  Created by IntelliJ IDEA.
+  User: Professional
+  Date: 22.02.2022
+  Time: 17:44
+  To change this template use File | Settings | File Templates.
+--%>
+
+<%
+  pageContext.setAttribute("lang", new Lang(request));
+%>

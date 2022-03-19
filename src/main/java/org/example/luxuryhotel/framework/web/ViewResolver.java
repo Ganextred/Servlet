@@ -15,7 +15,7 @@ public class ViewResolver {
             String link = view.substring(9);
             model.response.sendRedirect(link);
         }else {
-            view="WEB-INF/"+view;
+            view="/WEB-INF/"+view;
             RequestDispatcher dispatcher = model.request.getRequestDispatcher(view);
             dispatcher.forward(model.request, model.response);
         }

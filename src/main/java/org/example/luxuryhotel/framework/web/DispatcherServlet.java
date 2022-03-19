@@ -22,12 +22,10 @@ import java.util.List;
 import static org.example.luxuryhotel.framework.Util.Converter.convert;
 import static org.example.luxuryhotel.framework.web.ViewResolver.processView;
 
-@WebServlet("/test")
+@WebServlet("/main/*")
 public class DispatcherServlet extends HttpServlet {
     private final static Logger logger = Logger.getLogger(DispatcherServlet.class);
-
-
-    private HandlerMapping handlerMapping= HandlerMapping.getInstance();
+    private final HandlerMapping  handlerMapping = HandlerMapping.getInstance();
 
     public void init() throws ServletException {
 
@@ -40,16 +38,20 @@ public class DispatcherServlet extends HttpServlet {
         String view = doRequest(pair, model);
         try {
             processView(view, model);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-//        Pair<Method,Object> pair=handlerMapping.getPost(request);
-//        Model model=new Model(request, response);
-//        String view = doRequest(pair, model);
+        String path=request.getRequestURI();
+        Pair<Method,Object> pair=handlerMapping.getPost(path);
+        Model model=new Model(request, response);
+        String view = doRequest(pair, model);
+        try {
+            processView(view, model);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private String doRequest(Pair<Method, Object> pair, Model model) {
@@ -74,9 +76,7 @@ public class DispatcherServlet extends HttpServlet {
                 String name = rp.name();
                 if (p.getType().isArray()){
                     String[] data = model.request.getParameterValues(name);
-                    for (int i = 0; i < data.length; i++){
-                        data[i] = checkDefaultAndRequired(rp,data[i]);
-                    }
+                    data = checkDefaultAndRequiredForArr(rp, data);
                     result.add(convert(data,p.getType()));
                 }else {
                     String data = model.request.getParameter(name);
@@ -87,21 +87,30 @@ public class DispatcherServlet extends HttpServlet {
             if (p.getType().equals(Model.class))
                 result.add(model);
             if (p.getType().equals(HttpServletRequest.class))
-                result.add(model.response);
-            if (p.getType().equals(HttpServletResponse.class))
                 result.add(model.request);
+            if (p.getType().equals(HttpServletResponse.class))
+                result.add(model.response);
         }
         return result.toArray();
     }
     private String checkDefaultAndRequired(RequestParam rp, String data) {
         if (rp.required() && rp.defaultValue().equals("\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n") && data == null)
-            throw new NullParamException();
+            throw new NullParamException("param "+rp.name()+" not found");
         if (!rp.defaultValue().equals("\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n") && data == null)
             data = rp.defaultValue();
         return data;
     }
+    private String[] checkDefaultAndRequiredForArr(RequestParam rp, String[] data) {
+        if (data == null) {
+            if (rp.required() && rp.defaultValue().equals("\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n"))
+                throw new NullParamException("param "+rp.name()+"not found");
+            if (!rp.defaultValue().equals("\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n"))
+                data = new String[]{rp.defaultValue()};
+            else data = new String[]{};
+        }
+        return data;
+    }
 
-    public void destroy() {}
-
-
+    public void destroy() {
+    }
 }

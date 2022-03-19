@@ -44,7 +44,6 @@ public class Converter {
         throw new ConverterException("Cant convert String to "+c);
     }
     public static String[] convert(String[] parameters, Class<?> c){
-
         return parameters;
     }
 }

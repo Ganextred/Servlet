@@ -28,10 +28,8 @@ public class HandlerMapping {
     }
 
     private HandlerMapping() {
-        System.out.println("Начало сбора методов");
         Reflections reflections = new Reflections(LuxuryHotelApplication.class.getPackage().getName());
         Set<Class<?>> controllers = reflections.getTypesAnnotatedWith(Controller.class);
-        System.out.println(controllers.toString() + "Обнаруженные контроллеры");
         initGet(controllers);
         initPost(controllers);
     }
@@ -47,6 +45,8 @@ public class HandlerMapping {
                                 new Pair<Method, Object>(method, controller.getDeclaredConstructor().newInstance()));
                 }
             } catch (Exception e) {
+                e.printStackTrace();
+
             }
         }
     }
@@ -61,6 +61,7 @@ public class HandlerMapping {
                                 new Pair<Method, Object>(method, controller.getDeclaredConstructor().newInstance()));
                 }
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

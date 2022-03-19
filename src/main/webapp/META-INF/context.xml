@@ -1,0 +1,13 @@
+
+<Context>
+    <Resource name="jdbc/hotel"
+              auth="Container"
+              type="javax.sql.DataSource"
+              maxActive="100" maxIdle="30" maxWait="10000"
+              username="postgres" password="postgres"
+              driverClassName="org.postgresql.Driver"
+              defaultAutoCommit="false"
+              defaultTransactionIsolation="READ_COMMITTED"
+              url="jdbc:postgresql://localhost:5432/hotel"/>
+
+</Context><?xml version="1.0" encoding="UTF-8"?>
