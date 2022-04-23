@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 
 public class PasswordEncoder {
     private final static Logger logger = Logger.getLogger(PasswordEncoder.class);
@@ -17,6 +18,10 @@ public class PasswordEncoder {
             e.printStackTrace();
         }
         byte[] code = digest.digest(password.getBytes(StandardCharsets.UTF_8));
-        return code.toString();
+        StringBuilder t = new StringBuilder();
+        for (byte b : code) {
+            t.append((char) b);
+        }
+        return t.toString();
     }
 }

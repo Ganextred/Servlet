@@ -6,19 +6,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class ViewResolver {
-    static void processView(String view,Model model) throws ServletException, IOException {
-        model.merge();
-        if (view.equals("HttpStatus.ok")){
-           model.response.setStatus(HttpServletResponse.SC_OK);
-        }else
-        if (view.startsWith("redirect:")){
-            String link = view.substring(9);
-            model.response.sendRedirect(link);
-        }else {
+    static void processView(String view,Model model, RedirectAttributes rA) throws ServletException, IOException {
+        if (!view.equals("HttpStatus.ok"))
+            if (view.startsWith("redirect:")){
+                String link = model.request.getContextPath()+view.substring(9);
+                String attributes = rA.getLinkParameters();
+                model.response.sendRedirect(link+attributes);
+            }else {
+            model.merge();
             view="/WEB-INF/"+view;
             RequestDispatcher dispatcher = model.request.getRequestDispatcher(view);
             dispatcher.forward(model.request, model.response);
         }
     }
-
 }
+
+

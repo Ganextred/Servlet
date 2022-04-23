@@ -17,6 +17,8 @@ public class Converter {
         if (p==null)
             return null;
         if (c.equals(Boolean.class)){
+            if (p.equals("on"))
+                p="true";
             return Boolean.valueOf(p);
         }
         if (c.equals(Integer.class)){

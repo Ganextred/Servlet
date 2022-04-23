@@ -19,16 +19,16 @@ import java.util.Set;
 //Синглтон
 public class HandlerMapping {
     private final static Logger logger = Logger.getLogger(HandlerMapping.class);
-    public static Map<String, Pair<Method, Object>> getRequests = new HashMap<>();
-    public static Map<String, Pair<Method, Object>> postRequests = new HashMap<>();
-    public static HandlerMapping map = new HandlerMapping();
+    private Map<String, Pair<Method, Object>> getRequests = new HashMap<>();
+    private Map<String, Pair<Method, Object>> postRequests = new HashMap<>();
+    private static HandlerMapping map = new HandlerMapping();
 
     public static HandlerMapping getInstance() {
         return map;
     }
 
     private HandlerMapping() {
-        Reflections reflections = new Reflections(LuxuryHotelApplication.class.getPackage().getName());
+        Reflections reflections = new Reflections(AppContext.appClass.getPackage().getName());
         Set<Class<?>> controllers = reflections.getTypesAnnotatedWith(Controller.class);
         initGet(controllers);
         initPost(controllers);
@@ -66,32 +66,40 @@ public class HandlerMapping {
         }
     }
 
+    public Map<String, Pair<Method, Object>> getGetRequests() {
+        return getRequests;
+    }
+
+    public Map<String, Pair<Method, Object>> getPostRequests() {
+        return postRequests;
+    }
+
     public Pair<Method,Object> getGet(String path){
         if (!getRequests.containsKey(path)) {
-            logger.error("Controller fo path: "+ path +" not Exist");
+            logger.error("Controller to path get: "+ path +" not Exist");
             throw new ControllerNotExist("Controller fo path: "+ path +" not Exist");
         }
         return getRequests.get(path);
     }
     public Pair<Method,Object> getGet(HttpServletRequest request){
-        String path=request.getRequestURL().toString();
+        String path=request.getRequestURI();
         if (!getRequests.containsKey(path)) {
-            logger.error("Controller fo path: "+ path +" not Exist");
+            logger.error("Controller to path get: "+ path +" not Exist");
             throw new ControllerNotExist("Controller fo path: "+ path +" not Exist");
         }
         return getRequests.get(path);
     }
     public Pair<Method,Object> getPost(String path){
         if (!postRequests.containsKey(path)) {
-            logger.error("Controller fo path: "+ path +" not Exist");
+            logger.error("Controller to path post: "+ path +" not Exist");
             throw new ControllerNotExist("Controller fo path: "+ path +" not Exist");
         }
         return postRequests.get(path);
     }
     public Pair<Method,Object> getPost(HttpServletRequest request){
-        String path=request.getRequestURL().toString();
+        String path=request.getRequestURI();
         if (!postRequests.containsKey(path)) {
-            logger.error("Controller fo path: "+ path +" not Exist");
+            logger.error("Controller to post path: "+ path +" not Exist");
             throw new ControllerNotExist("Controller fo path: "+ path +" not Exist");
         }
         return postRequests.get(path);

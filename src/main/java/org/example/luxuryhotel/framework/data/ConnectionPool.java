@@ -1,11 +1,9 @@
 package org.example.luxuryhotel.framework.data;
 
 import org.apache.log4j.Logger;
+import org.example.luxuryhotel.framework.AppContext;
 import org.example.luxuryhotel.framework.exaptions.ConnectionPoolException;
-import org.example.luxuryhotel.framework.web.HandlerMapping;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -18,7 +16,7 @@ public class ConnectionPool {
     private static  String url;
     private static String user;
     private static String password;
-    private final static Logger logger = Logger.getLogger(HandlerMapping.class);
+    private final static Logger logger = Logger.getLogger(ConnectionPool.class);
     private static final ConnectionPool instance = new ConnectionPool();
     private static final Stack<Connection> connections = new Stack<>();
     private static int given = 0;
@@ -37,7 +35,7 @@ public class ConnectionPool {
 
     public synchronized Connection getConnection(){
         if (connections.size()> 0) {
-            Connection connection = connections.peek();
+            Connection connection = connections.pop();
             given++;
             return connection;
         }else if (given<MAX_CAPACITY){
@@ -60,6 +58,11 @@ public class ConnectionPool {
         }
     }
     public synchronized void close(Connection connection){
+        try {
+            connection.rollback();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         if (connections.size()>INIT_CAPACITY) {
             try {
                 connection.close();
@@ -71,19 +74,10 @@ public class ConnectionPool {
         notify();
     }
     static {
-
-//        FileInputStream fis;
-//        Properties property = new Properties();
-
-//        try {
-//            fis = new FileInputStream("src/main/resources/config.properties");
-//            property.load(fis);
-//            url = property.getProperty("datasource.url");
-//            user = property.getProperty("datasource.username");
-//            password = property.getProperty("datasource.password");
-            url = "jdbc:postgresql://localhost:5432/servlet";
-            user = "postgres";
-            password = "postgres";
+            Properties property = AppContext.property;
+            url = property.getProperty("datasource.url");
+            user = property.getProperty("datasource.user");
+            password = property.getProperty("datasource.password");;
             for (int i = 0; i<INIT_CAPACITY; i++){
                 try {
                     connections.push( DriverManager.getConnection(url, user, password));
@@ -92,11 +86,6 @@ public class ConnectionPool {
                     e.printStackTrace();
                 }
             }
-//        } catch (IOException e) {
-//            System.err.println("ОШИБКА: Файл свойств отсуствует!");
-//            e.printStackTrace();
-//        }
-
     }
 
 

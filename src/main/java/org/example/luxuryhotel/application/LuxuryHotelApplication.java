@@ -2,8 +2,20 @@ package org.example.luxuryhotel.application;
 
 import org.example.luxuryhotel.framework.FrameworkApplication;
 
-public class LuxuryHotelApplication {
-    public static void main(String[] args) {
-        FrameworkApplication.run(LuxuryHotelApplication.class);
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
+
+@WebListener
+public class LuxuryHotelApplication implements ServletContextListener {
+    @Override
+    public void contextInitialized(ServletContextEvent servletContextEvent) {
+        FrameworkApplication.run(LuxuryHotelApplication.class, servletContextEvent);
+
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+
     }
 }

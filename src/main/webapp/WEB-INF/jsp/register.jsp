@@ -1,5 +1,4 @@
-<%@include file="/WEB-INF/jspf/lang.jspf" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@include file="/WEB-INF/jspf/generalSetings.jspf" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +10,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <%--    <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>--%>
+</head>
 <body>
 
 <div class="sidenav">
@@ -18,7 +18,7 @@
         <div class="lang_buttons">
             <input type="image" onclick="swap_len()" class="hbtn" src="../../static/img/lang.png" alt="lang">
             <script>
-                function swap_len(){$.get('/lang',function (data){location.reload()})}
+                function swap_len(){$.get('/main/lang',function (data){location.reload()})}
             </script>
         </div>
     </header>
@@ -27,7 +27,7 @@
         <h2>${lang.gL("Register_Page")}</h2>
         <p >${lang.gL("Register_from_here_to_access")}</p>
         <c:forEach var="item" items="${message}"  >
-            <span> ${item} </span>
+            <p> ${lang.gL(item)} </p>
         </c:forEach>
     </div>
 </div>
@@ -41,11 +41,11 @@
                     <input type="text" name="username" class="form-control" placeholder=${lang.gL("User_Name")} placeholder="UserName">
                 </div>
                 <div class="form-group">
-                    <label >text="${lang.gL("Email")}"</label>
+                    <label >${lang.gL("Email")}</label>
                     <input type="email" name="email" class="form-control" placeholder="${lang.gL("Email")}" placeholder="Email">
                 </div>
                 <div class="form-group">
-                    <label text="${lang.gL("Password")}">Password</label>
+                    <label text="${lang.gL("Password")}"></label>
                     <input type="password" name="password" id="password" class="form-control" placeholder="${lang.gL("Password")}" placeholder="Password">
                 </div>
                 <div class="form-group">
@@ -53,8 +53,8 @@
                     <input type="password" class="form-control" id="confirm_password"  placeholder="${lang.gL("Confirm_Password")}" onkeyup='check();'>
                     <span id='message'></span>
                 </div>
-                <button type="submit" class="btn btn-secondary" text="${lang.gL("Register")}">Register</button>
-                <a href="login" class="btn btn-black" text="${lang.gL("Login")}"></a>
+                <button type="submit" class="btn btn-secondary" >${lang.gL("Register")}</button>
+                <a href="login" class="btn btn-black" >${lang.gL("Login")}</a>
             </form>
         </div>
     </div>

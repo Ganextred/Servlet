@@ -18,7 +18,6 @@ import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import static org.example.luxuryhotel.framework.Util.Converter.convert;
 import static org.example.luxuryhotel.framework.web.ViewResolver.processView;
 
@@ -27,17 +26,17 @@ public class DispatcherServlet extends HttpServlet {
     private final static Logger logger = Logger.getLogger(DispatcherServlet.class);
     private final HandlerMapping  handlerMapping = HandlerMapping.getInstance();
 
-    public void init() throws ServletException {
-
+    public void init() {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
         String path=request.getRequestURI();
         Pair<Method,Object> pair=handlerMapping.getGet(path);
         Model model=new Model(request, response);
-        String view = doRequest(pair, model);
+        RedirectAttributes rA = new RedirectAttributes();
+        String view = doRequest(pair, model, rA);
         try {
-            processView(view, model);
+            processView(view, model, rA);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
@@ -46,29 +45,32 @@ public class DispatcherServlet extends HttpServlet {
         String path=request.getRequestURI();
         Pair<Method,Object> pair=handlerMapping.getPost(path);
         Model model=new Model(request, response);
-        String view = doRequest(pair, model);
+        RedirectAttributes rA = new RedirectAttributes();
+        String view = doRequest(pair, model, rA);
         try {
-            processView(view, model);
+            processView(view, model, rA);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
-
-    private String doRequest(Pair<Method, Object> pair, Model model) {
+    private String doRequest(Pair<Method, Object> pair, Model model, RedirectAttributes rA) {
         Method method = pair.getFirst();
         Object controller= pair.getSecond();
-        Object[] parameters= injectParameters(method, model);
+        Object[] parameters= injectParameters(method, model, rA);
         try {
-            return (String) method.invoke(controller,(Object[])parameters);
+            return (String) method.invoke(controller, parameters);
         } catch (IllegalAccessException | InvocationTargetException e) {
-            logger.error("Cant invoke request to controller: "+ pair.getSecond());
+            logger.error("Cant invoke request to controller: "+ pair.getSecond(), e);
             e.printStackTrace();
+            return "error";
+        } catch (IllegalArgumentException e){
+            logger.error("Problem with method invoke", e);
             return "error";
         }
     }
 
-    private Object[] injectParameters(Method method, Model model) {
-        List<Object> result= new ArrayList<Object>();
+    private Object[] injectParameters(Method method, Model model, RedirectAttributes rA) {
+        List<Object> result= new ArrayList<>();
         Parameter[] parameter = method.getParameters();
         for (Parameter p:parameter){
             if (p.isAnnotationPresent(RequestParam.class)){
@@ -86,9 +88,11 @@ public class DispatcherServlet extends HttpServlet {
             }
             if (p.getType().equals(Model.class))
                 result.add(model);
-            if (p.getType().equals(HttpServletRequest.class))
+            else if (p.getType().equals(RedirectAttributes.class))
+                result.add(rA);
+            else if (p.getType().equals(HttpServletRequest.class))
                 result.add(model.request);
-            if (p.getType().equals(HttpServletResponse.class))
+            else if (p.getType().equals(HttpServletResponse.class))
                 result.add(model.response);
         }
         return result.toArray();
@@ -103,7 +107,7 @@ public class DispatcherServlet extends HttpServlet {
     private String[] checkDefaultAndRequiredForArr(RequestParam rp, String[] data) {
         if (data == null) {
             if (rp.required() && rp.defaultValue().equals("\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n"))
-                throw new NullParamException("param "+rp.name()+"not found");
+                throw new NullParamException("param "+rp.name()+" not found");
             if (!rp.defaultValue().equals("\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n"))
                 data = new String[]{rp.defaultValue()};
             else data = new String[]{};
@@ -114,3 +118,4 @@ public class DispatcherServlet extends HttpServlet {
     public void destroy() {
     }
 }
+

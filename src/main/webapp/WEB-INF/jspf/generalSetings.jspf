@@ -1,0 +1,18 @@
+
+<%--===========================================================================
+Page directive. Sets the content type and encoding.
+Encoding of the response: UTF-8
+Encoding of this JSP page: UTF-8
+===========================================================================--%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8" %>
+<%--===========================================================================
+Function to access resource bundles as ${lang.gL("String")}}
+===========================================================================--%>
+<%@ page import="org.example.luxuryhotel.application.jspUtil.Lang" %>
+<%
+    pageContext.setAttribute("lang", new Lang(request));
+%>
+<%--===========================================================================
+JSTL
+===========================================================================--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>

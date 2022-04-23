@@ -2,16 +2,14 @@ package org.example.luxuryhotel.application.model.service;
 
 
 import org.apache.log4j.Logger;
-import org.example.luxuryhotel.application.entities.User;
+import org.example.luxuryhotel.entities.User;
 import org.example.luxuryhotel.application.model.repository.UserRepository;
-import org.example.luxuryhotel.framework.data.ConnectionPool;
-import java.sql.Connection;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class Validator {
-    UserRepository userRepo = new UserRepository();
     private final static Logger logger = Logger.getLogger(Validator.class);
 
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
@@ -38,6 +36,34 @@ public class Validator {
         }
         return s;
     }
+    public List<String> logUser(User user){
+        List<String> s=new ArrayList<>();
+        if (!userName(user.getUsername())) {
+            s.add("incorrectUsername");
+        }
+        if (!password(user.getPassword())){
+            s.add("Password_problem");
+        }
+        return s;
+    }
+
+    public static boolean checkSortParams(String[] sortParams) {
+        if (sortParams == null || sortParams.length != 3)
+            return false;
+        for (int i = 0; i<3; i++)
+            if (!(sortParams[i].equals("price") || sortParams[i].equals("beds") || sortParams[i].equals("clazz")))
+                return false;
+        return true;
+    }
+    public static boolean checkOrderParams(String[] orderParams) {
+        if (orderParams == null || orderParams.length != 3)
+            return false;
+        for (int i = 0; i<3; i++)
+            if (!(orderParams[i].equals("true") || orderParams[i].equals("false")))
+                return false;
+        return true;
+    }
+
 
 //    public List<String> bookApartment(String arrivalDayStr, String endDayStr, Apartment apartment){
 //        List<String> messages=timeInterval(arrivalDayStr, endDayStr);

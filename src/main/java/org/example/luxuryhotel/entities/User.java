@@ -1,11 +1,15 @@
-package org.example.luxuryhotel.application.entities;
+package org.example.luxuryhotel.entities;
 
 
 
+import org.example.luxuryhotel.framework.security.GrantedAuthority;
+import org.example.luxuryhotel.framework.security.UserDetails;
+
+import java.util.Collection;
 import java.util.Set;
 
 
-public class User {
+public class User implements UserDetails {
 
     private Integer id;
     private String username;
@@ -73,5 +77,8 @@ public class User {
 
     public User setRoles(Set<Role> roles) {this.roles = roles; return this;}
 
+    public Collection<? extends GrantedAuthority> getAuthorities(){
+        return getRoles();
+    };
 
 }
