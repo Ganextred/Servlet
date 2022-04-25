@@ -31,10 +31,10 @@ public class ApartmentsController {
                                  @RequestParam (name = "endDay", required = false) String endDay,
                                  @RequestParam(name = "sortParams", required = false) String[] sortParams,
                                  @RequestParam(name = "orderParams", required = false) String[] orderParams,
-                                 @RequestParam (name = "AVAILABLE", required = false) Boolean available,
-                                 @RequestParam (name = "BOOKED", required = false) Boolean booked,
-                                 @RequestParam (name = "BOUGHT", required = false) Boolean bought,
-                                 @RequestParam (name = "INACCESSIBLE", required = false) Boolean inaccessible){
+                                 @RequestParam (name = "AVAILABLE", required = false, defaultValue = "true") Boolean available,
+                                 @RequestParam (name = "BOOKED", required = false, defaultValue = "true") Boolean booked,
+                                 @RequestParam (name = "BOUGHT", required = false, defaultValue = "true") Boolean bought,
+                                 @RequestParam (name = "INACCESSIBLE", required = false, defaultValue = "true") Boolean inaccessible){
         ApartmentManager apartmentManager = new ApartmentManager();
         if (page <1)
             page =1;

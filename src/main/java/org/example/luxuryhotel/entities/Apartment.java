@@ -15,6 +15,13 @@ public class Apartment {
 
     private List<ApartmentStatus> apartmentStatuses;
 
+    public Apartment(int id, int beds, int clazz, int price) {
+        this.id = id;
+        this.beds = beds;
+        this.clazz = Clazz.values()[clazz];
+        this.price = price;
+    }
+
     public List<ApartmentStatus> getApartmentStatuses() {
         return apartmentStatuses;
     }

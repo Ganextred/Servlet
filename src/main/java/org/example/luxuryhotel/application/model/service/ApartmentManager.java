@@ -4,23 +4,22 @@ package org.example.luxuryhotel.application.model.service;
 
 
 import org.apache.log4j.Logger;
+import org.example.luxuryhotel.application.model.repository.ApartmentRepository;
 import org.example.luxuryhotel.entities.Apartment;
+import org.example.luxuryhotel.framework.data.ConnectionPool;
+import org.example.luxuryhotel.framework.data.Pageable;
+import org.example.luxuryhotel.framework.data.Sort;
 import org.example.luxuryhotel.framework.web.Model;
 import org.example.luxuryhotel.framework.web.RedirectAttributes;
 
 
-import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.*;
 
 
 public class ApartmentManager {
 
-    Validator valid;
-    CookieManager cookieManager;
 
     private final static Integer pageCapacity = 9;
     private final static Logger logger = Logger.getLogger(ApartmentManager.class);
@@ -38,7 +37,8 @@ public class ApartmentManager {
         model.addAttribute("BOOKED", booked);
         model.addAttribute("BOUGHT", bought);
         model.addAttribute("INACCESSIBLE", inaccessible);
-        model.addAttribute("apartments", new ArrayList<Apartment>());
+        model.addAttribute("apartments", getSortedApartments(arrivalDay,endDay,sortParams,orderParams,
+                                available,booked,bought,inaccessible,page));
     }
 
     public void addRedirectSortParams(RedirectAttributes rA, String arrivalDay, String endDay,
@@ -58,34 +58,38 @@ public class ApartmentManager {
     }
 
 
-//    public List<Apartment> getSortedApartments(String arrivalDay, String endDay, String[] sortParams, String[] orderParams, Map<String, Boolean> status, Integer page){
-//        Sort sortBySortParams = getSort(sortParams, orderParams);
-//        Pageable pageable = PageRequest.of(page-1,pageCapacity,sortBySortParams);
-//        TimeInterval timeInterval = TimeInterval.getValidInterval(arrivalDay, endDay);
-//        return apartmentRepo.
-//                findWthStatus(timeInterval.arrivalDay, timeInterval.endDay,
-//                                status.containsKey("AVAILABLE"), status.containsKey("BOOKED"),
-//                                status.containsKey("BOUGHT"), status.containsKey("INACCESSIBLE"),
-//                                pageable);
-//    }
-//
-//
-//    public Sort getSort (String[] sortParams, Boolean[] orderParams){
-//        if (sortParams == null || sortParams.length == 0)
-//            sortParams = new String[]{"price"};
-//        if (orderParams == null || orderParams.length == 0)
-//            orderParams = new Boolean[]{true};
-//        if (orderParams.length != sortParams.length){
-//            sortParams = new String[]{"price"};
-//            orderParams = new Boolean[]{true};
-//        }
-//        Sort sortBySortParams = orderParams[0]?Sort.by(Sort.Direction.ASC, sortParams[0]):Sort.by(Sort.Direction.DESC, sortParams[0]);
-//        for (int i = 1; i<orderParams.length; i++)
-//            if (orderParams[i])
-//                sortBySortParams = sortBySortParams.and(Sort.by(Sort.Direction.ASC, sortParams[i]));
-//            else sortBySortParams = sortBySortParams.and(Sort.by(Sort.Direction.DESC, sortParams[i]));
-//        return sortBySortParams;
-//    }
+    public List<Apartment> getSortedApartments(String arrivalDay, String endDay, String[] sortParams, String[] orderParams,
+                                               Boolean available,Boolean booked,Boolean bought,Boolean inaccessible, Integer page){
+        Sort sortBySortParams = getSort(sortParams, orderParams);
+        Pageable pageable = Pageable.of(page-1,pageCapacity,sortBySortParams);
+        TimeInterval timeInterval = TimeInterval.getValidInterval(arrivalDay, endDay);
+        ApartmentRepository apartmentRepo = new ApartmentRepository(ConnectionPool.getInstance().getConnection());
+        List<Apartment> apartments= apartmentRepo.
+                findWithStatus(timeInterval.arrivalDay, timeInterval.endDay,
+                                available, booked,
+                                bought, inaccessible,
+                                pageable);
+        ConnectionPool.getInstance().close(apartmentRepo.getConnection());
+        return apartments;
+    }
+
+
+    public Sort getSort (String[] sortParams, String[] orderParams){
+        if (sortParams == null || sortParams.length == 0)
+            sortParams = new String[]{"price"};
+        if (orderParams == null || orderParams.length == 0)
+            orderParams = new String[]{"true"};
+        if (orderParams.length != sortParams.length){
+            sortParams = new String[]{"price"};
+            orderParams = new String[]{" "};
+        }
+        Sort sortBySortParams = orderParams[0].equals("true")?Sort.by(Sort.Direction.ASC, sortParams[0]):Sort.by(Sort.Direction.DESC, sortParams[0]);
+        for (int i = 1; i<orderParams.length; i++)
+            if (orderParams[i].equals("true"))
+                sortBySortParams = sortBySortParams.and(Sort.by(Sort.Direction.ASC, sortParams[i]));
+            else sortBySortParams = sortBySortParams.and(Sort.by(Sort.Direction.DESC, sortParams[i]));
+        return sortBySortParams;
+    }
 
 
 

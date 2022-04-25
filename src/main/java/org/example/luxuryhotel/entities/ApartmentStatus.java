@@ -21,6 +21,8 @@ public class ApartmentStatus {
     private LocalDateTime payTimeLimit;
 
 
+
+
     public void clone(ApartmentStatus as){
         this.id = as.id;
         this.apartmentId = as.apartmentId;
@@ -35,6 +37,15 @@ public class ApartmentStatus {
     }
 
     public ApartmentStatus(Apartment apartmentId, User user, LocalDate arrivalDay, LocalDate endDay, LocalDateTime payTimeLimit,Status status) {
+        this.apartmentId = apartmentId;
+        this.user = user;
+        this.arrivalDay = arrivalDay;
+        this.endDay = endDay;
+        this.payTimeLimit = payTimeLimit;
+        this.status = status;
+    }
+    public ApartmentStatus(Integer id,Apartment apartmentId, User user, LocalDate arrivalDay, LocalDate endDay, LocalDateTime payTimeLimit,Status status) {
+        this.id = id;
         this.apartmentId = apartmentId;
         this.user = user;
         this.arrivalDay = arrivalDay;

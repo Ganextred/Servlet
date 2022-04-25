@@ -15,9 +15,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-public class UserRepository {
-    private final Connection connection;
+public class UserRepository extends Repository{
+    public UserRepository(Connection connection){
+        super(connection);
+    }
     private final static Logger logger = Logger.getLogger(UserRepository.class);
+    private final static String findUserById = "SELECT * FROM usr u WHERE u.id = ?";
     private final static String findByUsernameOrEmailQueryUE="SELECT * FROM usr u WHERE u.username = ? OR u.email = ?";
     private final static String insertUserAEPU ="INSERT INTO usr (active, email,password, username) " +
             "VALUES (?, ?, ?, ?) RETURNING id";
@@ -26,13 +29,29 @@ public class UserRepository {
     private final static String deleteRole= "DELETE FROM user_role WHERE user_id = ? AND roles = ?";
     private final static String insertRole= "INSERT INTO user_role (user_id, roles) VALUES (?,?)";
 
+    private User extractUser(ResultSet rs) throws SQLException {
+        if (rs.next()){
+            Integer resultId = rs.getInt("id");
+            boolean resultActive = rs.getBoolean("active");
+            String resultEmail = rs.getString("email");
+            String resultPass = rs.getString("password");
+            String resultUsername = rs.getString("username");
+            User user  = new User(resultId, resultActive, resultEmail, resultPass, resultUsername);
+            user.setRoles(findUserRolesById(user.getId()));
+            return user;
+        }
+        else return  null;
+    }
 
-    public UserRepository(Connection connection){
-        this.connection = connection;
+    public User findUserById(int id){
         try {
-            this.connection.setAutoCommit(false);
-        } catch (SQLException e) {
+            PreparedStatement statement = connection.prepareStatement(findUserById);
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+            return extractUser(rs);
+        }catch (SQLException e) {
             e.printStackTrace();
+            throw new RepositoryException(e);
         }
     }
 
@@ -41,26 +60,12 @@ public class UserRepository {
             PreparedStatement statement = connection.prepareStatement(findByUsernameOrEmailQueryUE);
             statement.setString(1, username);
             statement.setString(2, email);
-            statement.executeQuery();
-            if (statement.execute()){
-                ResultSet resultSet = statement.getResultSet();
-                if (resultSet.next()) {
-                    Integer resultId = resultSet.getInt("id");
-                    boolean resultActive = resultSet.getBoolean("active");
-                    String resultEmail = resultSet.getString("email");
-                    String resultPass = resultSet.getString("password");
-                    String resultUsername = resultSet.getString("username");
-                    User user  = new User(resultId, resultActive, resultEmail, resultPass, resultUsername);
-                    user.setRoles(findUserRolesById(user.getId()));
-                    return user;
-                }
-                else return null;
-            }
+            ResultSet resultSet = statement.executeQuery();;
+            return extractUser(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RepositoryException(e);
         }
-        return null;
     }
 
     public Set<Role> findUserRolesById(int id){
