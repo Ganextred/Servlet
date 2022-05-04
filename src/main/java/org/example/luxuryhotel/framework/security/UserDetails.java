@@ -4,4 +4,5 @@ import java.util.Collection;
 
 public interface UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities();
+    public boolean hasRole(String role);
 }

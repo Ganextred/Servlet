@@ -30,8 +30,7 @@ public class Lang {
         try{
             return resourceBundle.getString(message);
         }catch (MissingResourceException e){
-            logger.warn("MissingResourceException" + "for key"+ message+"   !!!!");
-            e.printStackTrace();
+            logger.warn("MissingResourceException" + "for key "+ message+"   !!!!");
         }
         return message;
 

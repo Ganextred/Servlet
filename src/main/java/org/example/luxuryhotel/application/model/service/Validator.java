@@ -2,10 +2,18 @@ package org.example.luxuryhotel.application.model.service;
 
 
 import org.apache.log4j.Logger;
+import org.example.luxuryhotel.entities.Apartment;
+import org.example.luxuryhotel.entities.ApartmentStatus;
+import org.example.luxuryhotel.entities.Clazz;
 import org.example.luxuryhotel.entities.User;
 import org.example.luxuryhotel.application.model.repository.UserRepository;
 
+import java.sql.Connection;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -65,75 +73,78 @@ public class Validator {
     }
 
 
-//    public List<String> bookApartment(String arrivalDayStr, String endDayStr, Apartment apartment){
-//        List<String> messages=timeInterval(arrivalDayStr, endDayStr);
-//        if (apartment == null){
-//            messages.add("weCouldn'tFindSomething");
-//            logger.warn("validator got null apartment");
-//        }else
-//        if (messages.size() == 0){
-//            try{
-//                LocalDate arrivalDateT = LocalDate.parse(arrivalDayStr);
-//                LocalDate endDateT = LocalDate.parse(endDayStr);
-//                for (ApartmentStatus as: apartment.getApartmentStatuses()){
-//                    if ((as.getArrivalDay().compareTo(endDateT) <= 0 && as.getEndDay().compareTo(arrivalDateT)>=0 &&
-//                            (as.getPayTimeLimit() == null || as.getPayTimeLimit().compareTo(LocalDateTime.now()) >=0))
-//                            || arrivalDateT.compareTo(LocalDate.now()) <0
-//                            || endDateT.compareTo(LocalDate.now()) <0){
-//                        messages.add("apartmentNotAvailableOnTime");
-//                        break;
-//                    }
-//                }
-//            }catch (NullPointerException e){
-//                messages.add("weCouldn'tFindSomething");
-//                logger.error("validator got nullPointer");
-//            }
-//        }
-//        return messages;
-//    }
-//
-//    public List<String> updateApartment(Integer price, Clazz clazz, Integer beds){
-//        List<String> messages = new ArrayList<>();
-//        if(clazz == null)
-//            messages.add("choseClazz");
-//        if(beds == null || beds < 0)
-//            messages.add("incorrectBeds");
-//        if(price == null || price< 0)
-//            messages.add("incorrectPrice");
-//        return messages;
-//    }
-//
-//    public List<String> sendRequest(String arrivalDay, String endDay, Clazz clazz, Integer beds, String wishes){
-//        List<String> messages = new ArrayList<>();
-//        if(clazz == null)
-//            messages.add("choseClazz");
-//        if(beds == null || beds < 0)
-//            messages.add("incorrectBeds");
-//        if(wishes == null)
-//            messages.add("writeWishes");
-//        messages.addAll(timeInterval(arrivalDay,endDay));
-//        return messages;
-//    }
-//
-//    public List<String> timeInterval(String arrivalDayStr, String endDayStr){
-//        List<String> messages = new ArrayList<>();
-//        try {
-//            LocalDate arrivalDateT = LocalDate.parse(arrivalDayStr);
-//            LocalDate endDateT = LocalDate.parse(endDayStr);
-//            if (arrivalDateT.compareTo(endDateT) > 0) {
-//                messages.add("wrongDayOrder");
-//            }
-//            if (arrivalDateT.compareTo(LocalDate.now()) < 0) {
-//                messages.add("tooEarlyArrival");
-//                logger.debug("Arrival day cant bee yesterday");
-//            }
-//        }catch (DateTimeParseException e){
-//            messages.add("weCantRecognizeDay");
-//            logger.warn("Validator got unparsed arrival or end day");
-//        }catch (NullPointerException e){
-//            messages.add("chooseArrivalOrEndDay");
-//            logger.warn("Validator got null(or 0length) arrival or end day");
-//        }
-//        return messages;
-//    }
+    public List<String> bookApartment(String arrivalDayStr, String endDayStr, Apartment apartment, User user){
+        List<String> messages = new LinkedList<>();
+        if (user == null)
+            messages.add("accessDenied");
+        messages.addAll(timeInterval(arrivalDayStr, endDayStr));
+        if (apartment == null){
+            messages.add("weCouldn'tFindSomething");
+            logger.warn("validator got null apartment");
+        }else
+        if (messages.size() == 0){
+            try{
+                LocalDate arrivalDateT = LocalDate.parse(arrivalDayStr);
+                LocalDate endDateT = LocalDate.parse(endDayStr);
+                for (ApartmentStatus as: apartment.getApartmentStatuses()){
+                    if ((as.getArrivalDay().compareTo(endDateT) <= 0 && as.getEndDay().compareTo(arrivalDateT)>=0 &&
+                            (as.getPayTimeLimit() == null || as.getPayTimeLimit().compareTo(LocalDateTime.now()) >=0))
+                            || arrivalDateT.compareTo(LocalDate.now()) <0
+                            || endDateT.compareTo(LocalDate.now()) <0){
+                        messages.add("apartmentNotAvailableOnTime");
+                        break;
+                    }
+                }
+            }catch (NullPointerException e){
+                messages.add("weCouldn'tFindSomething");
+                logger.error("validator got nullPointer");
+            }
+        }
+        return messages;
+    }
+
+    public List<String> updateApartment(Integer price, Clazz clazz, Integer beds){
+        List<String> messages = new ArrayList<>();
+        if(clazz == null)
+            messages.add("choseClazz");
+        if(beds == null || beds < 0)
+            messages.add("incorrectBeds");
+        if(price == null || price< 0)
+            messages.add("incorrectPrice");
+        return messages;
+    }
+
+    public List<String> sendRequest(String arrivalDay, String endDay, Clazz clazz, Integer beds, String wishes){
+        List<String> messages = new ArrayList<>();
+        if(clazz == null)
+            messages.add("choseClazz");
+        if(beds == null || beds < 0)
+            messages.add("incorrectBeds");
+        if(wishes == null)
+            messages.add("writeWishes");
+        messages.addAll(timeInterval(arrivalDay,endDay));
+        return messages;
+    }
+
+    public List<String> timeInterval(String arrivalDayStr, String endDayStr){
+        List<String> messages = new LinkedList<>();
+        try {
+            LocalDate arrivalDateT = LocalDate.parse(arrivalDayStr);
+            LocalDate endDateT = LocalDate.parse(endDayStr);
+            if (arrivalDateT.compareTo(endDateT) > 0) {
+                messages.add("wrongDayOrder");
+            }
+            if (arrivalDateT.compareTo(LocalDate.now()) < 0) {
+                messages.add("tooEarlyArrival");
+                logger.debug("Arrival day cant bee yesterday");
+            }
+        }catch (DateTimeParseException e){
+            messages.add("weCantRecognizeDay");
+            logger.warn("Validator got unparsed arrival or end day");
+        }catch (NullPointerException e){
+            messages.add("chooseArrivalOrEndDay");
+            logger.warn("Validator got null(or 0length) arrival or end day");
+        }
+        return messages;
+    }
 }

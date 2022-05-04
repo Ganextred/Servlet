@@ -4,6 +4,7 @@ package org.example.luxuryhotel.application.model.repository;
 import org.apache.log4j.Logger;
 import org.example.luxuryhotel.entities.Role;
 import org.example.luxuryhotel.entities.User;
+import org.example.luxuryhotel.framework.data.ConnectionPool;
 import org.example.luxuryhotel.framework.exaptions.RepositoryException;
 import org.example.luxuryhotel.framework.security.GrantedAuthority;
 
@@ -50,6 +51,7 @@ public class UserRepository extends Repository{
             ResultSet rs = statement.executeQuery();
             return extractUser(rs);
         }catch (SQLException e) {
+            ConnectionPool.getInstance().close(connection);
             e.printStackTrace();
             throw new RepositoryException(e);
         }
@@ -63,6 +65,7 @@ public class UserRepository extends Repository{
             ResultSet resultSet = statement.executeQuery();;
             return extractUser(resultSet);
         } catch (SQLException e) {
+            ConnectionPool.getInstance().close(connection);
             e.printStackTrace();
             throw new RepositoryException(e);
         }
@@ -79,6 +82,7 @@ public class UserRepository extends Repository{
             }
             return  roles;
         }catch (SQLException e) {
+            ConnectionPool.getInstance().close(connection);
             e.printStackTrace();
             throw new RepositoryException(e);
         }
@@ -97,6 +101,7 @@ public class UserRepository extends Repository{
             user.setId(resultSet.getInt("id"));
             rewriteRoles(user);
         } catch (SQLException e) {
+            ConnectionPool.getInstance().close(connection);
             e.printStackTrace();
             throw new RepositoryException(e);
         }
@@ -111,6 +116,7 @@ public class UserRepository extends Repository{
             user.setRoles(roles);
         }
         Set<Role> roles = findUserRolesById(user.getId());
+        Set<Role> inserted = new HashSet<>();
         for (Role role : roles){
             if (!user.getRoles().contains(role)){
                 PreparedStatement deleteRoleStm = connection.prepareStatement(deleteRole);
@@ -118,13 +124,15 @@ public class UserRepository extends Repository{
                 deleteRoleStm.setString(2,role.toString());
                 deleteRoleStm.execute();
             }
-            else user.getRoles().remove(role);
+            else inserted.add(role);
         }
         for (Role role : user.getRoles()){
-            PreparedStatement insertRoleStm = connection.prepareStatement(insertRole);
-            insertRoleStm.setInt(1,user.getId());
-            insertRoleStm.setString(2,role.toString());
-            insertRoleStm.execute();
+            if (!inserted.contains(role)) {
+                PreparedStatement insertRoleStm = connection.prepareStatement(insertRole);
+                insertRoleStm.setInt(1, user.getId());
+                insertRoleStm.setString(2, role.toString());
+                insertRoleStm.execute();
+            }
         }
     }
 }

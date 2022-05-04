@@ -5,15 +5,25 @@ package org.example.luxuryhotel.application.model.service;
 
 import org.apache.log4j.Logger;
 import org.example.luxuryhotel.application.model.repository.ApartmentRepository;
-import org.example.luxuryhotel.entities.Apartment;
+import org.example.luxuryhotel.application.model.repository.ApartmentStatusRepository;
+import org.example.luxuryhotel.application.model.repository.RequestRepository;
+import org.example.luxuryhotel.entities.*;
+import org.example.luxuryhotel.framework.Util.Pair;
 import org.example.luxuryhotel.framework.data.ConnectionPool;
 import org.example.luxuryhotel.framework.data.Pageable;
 import org.example.luxuryhotel.framework.data.Sort;
+import org.example.luxuryhotel.framework.exaptions.RepositoryException;
 import org.example.luxuryhotel.framework.web.Model;
 import org.example.luxuryhotel.framework.web.RedirectAttributes;
 
 
+import javax.servlet.ServletException;
+import javax.servlet.http.Part;
+import java.io.File;
+import java.io.IOException;
+import java.sql.Connection;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.*;
 
@@ -22,7 +32,9 @@ public class ApartmentManager {
 
 
     private final static Integer pageCapacity = 9;
+    private final static String path = "C:/Users/Professional/IdeaProjects/HotelServlet/HotelServlet";
     private final static Logger logger = Logger.getLogger(ApartmentManager.class);
+
 
     public void addModelSortParams(Model model, String arrivalDay, String endDay,
                                           String[] sortParams, String[] orderParams, Boolean available,Boolean booked,
@@ -91,97 +103,162 @@ public class ApartmentManager {
         return sortBySortParams;
     }
 
+    public void addModelApartmentParam(Model model, Integer apartmentId) {
+        Connection conn = ConnectionPool.getInstance().getConnection();
+        ApartmentRepository apartmentRepo = new ApartmentRepository(conn);
+        model.addAttribute("apartment", apartmentRepo.findApartmentById(apartmentId));
+    }
+
+    public Pair<List<String>, ApartmentStatus> book(String arrivalDay, String endDay, User user, Integer apartmentId, boolean forRequest) {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection conn = connectionPool.getConnection();
+        Pair<List<String>, ApartmentStatus> r = book(arrivalDay, endDay, user, apartmentId, forRequest, conn);
+        connectionPool.commit(conn);
+        connectionPool.close(conn);
+        return r;
+    }
+
+    public Pair<List<String>, ApartmentStatus> book(String arrivalDay, String endDay, User user, Integer apartmentId, boolean forRequest, Connection conn) {
+        Status bookTypeStatus = forRequest?Status.BOOKEDREQUEST:Status.BOOKED;
+        ApartmentRepository apartmentRepo = new ApartmentRepository(conn);
+        Apartment apartment = apartmentRepo.findApartmentById(apartmentId);
+        Validator valid = new Validator();
+        List<String> status = valid.bookApartment(arrivalDay,endDay,apartment, user);
+        ApartmentStatus apartmentStatus = new ApartmentStatus();
+        if (status.size()==0){
+            apartmentStatus =
+                    new ApartmentStatus(apartment,user,LocalDate.parse(arrivalDay),LocalDate.parse(endDay),
+                            LocalDateTime.now().plusDays(2), bookTypeStatus);
+            ApartmentStatusRepository apartmentStatusRepo = new ApartmentStatusRepository(conn);
+            try{
+                apartmentStatusRepo.insertApartmentStatus(apartmentStatus);
+            }catch (RepositoryException e){
+                ConnectionPool.getInstance().close(conn);
+                status.add ("weCouldn'tFindSomething");
+                return Pair.of(status, apartmentStatus);
+            }
+        }
+        return Pair.of(status, apartmentStatus);
+    }
 
 
-//    @Transactional
-//    public Pair<List<String>, ApartmentStatus> book(String arrivalDay, String endDay, User user, Apartment apartment, boolean forRequest) {
-//        Status bookTypeStatus = forRequest?Status.BOOKEDREQUEST:Status.BOOKED;
-//        List<String> status = valid.bookApartment(arrivalDay,endDay,apartment);
-//        ApartmentStatus apartmentStatus = new ApartmentStatus();
-//        if (status.size()==0){
-//            apartmentStatus =
-//                    new ApartmentStatus(apartment,user,LocalDate.parse(arrivalDay),LocalDate.parse(endDay),
-//                           LocalDateTime.now().plusDays(2), bookTypeStatus);
-//            apartmentStatusRepo.save(apartmentStatus);
-//            sendBill(user.getEmail()+"dfsfs",apartment.getPrice());
-//        }
-//        return Pair.of(status, apartmentStatus);
-//    }
-//
-//
-//    @Transactional
-//    public List<String> confirmBook(ApartmentStatus apartmentStatus) {
-//        List<String> status = new ArrayList<>();
-//        apartmentStatus.setStatus(Status.BOUGHT);
-//        apartmentStatus.setPayTimeLimit(null);
-//        apartmentStatusRepo.save(apartmentStatus);
-//        return status;
-//    }
-//
-//    @Transactional
-//    public List<String> confirmRequest(Request request) {
-//        List<String> status = new ArrayList<>();
-//        request.getAnswerStatus().setStatus(Status.BOOKED);
-//        request.getAnswerStatus().setPayTimeLimit(LocalDateTime.now().plusDays(2));
-//        apartmentStatusRepo.save(request.getAnswerStatus());
-//        requestRepo.delete(request);
-//        return status;
-//    }
-//
-//    @Transactional
-//    public List<String> answerRequest(Request request, Apartment apartment) {
-//        Pair<List<String>,ApartmentStatus> bookResult = book(request.getArrivalDay().toString(), request.getEndDay().toString(), request.getUserId(), apartment, true);
-//        List<String> status = bookResult.getFirst();
-//        ApartmentStatus apartmentStatus = bookResult.getSecond();
-//        if (status.size()==0){
-//                request.setAnswerStatus(apartmentStatus);
-//                requestRepo.save(request);
-//        }
-//        return status;
-//    }
-//
-//    @Transactional
-//    public List<String> updateApartment(Apartment apartment, Integer price, Clazz clazz, Integer beds, MultipartFile file) {
-//        List<String> status = valid.updateApartment(price,clazz,beds);
-//        if (status.size()==0){
-//            try {
-//                if (!file.isEmpty()){
-//                    file.transferTo(new File(new File("").getAbsolutePath()+ "/src/main/resources/static/img/room/room-"
-//                            +apartment.getId()+'-'+apartment.getImages().size()));
-//                    apartment.getImages().add("room-" + apartment.getId().toString()+'-'+apartment.getImages().size());
-//                }
-//                apartment.setBeds(beds);
-//                apartment.setClazz(clazz);
-//                apartment.setPrice(price);
-//                apartmentRepo.save(apartment);
-//            } catch (IOException | IllegalStateException e) {
-//                status.add("problemsWithFile");
-//            }
-//        }
-//        return status;
-//    }
-//
-//    @Transactional
-//    public Apartment newApartment(){
-//        List<String> messages = new ArrayList<>();
-//        Apartment apartment = new Apartment();
-//        apartment.setPrice(9999).setBeds(1).setClazz(Clazz.LUX);
-//        return apartmentRepo.save(apartment);
-//    }
-//
-//    @Transactional
-//    public void deleteApartment(Apartment apartment) {
-//        apartmentRepo.delete(apartment);
-//        List<String> images = apartment.getImages();
-//        for (String image: images) {
-//            File file = new File((new File("").getAbsolutePath() + "/src/main/resources/static/img/room/" + image));
-//            if (!file.delete())
-//                logger.warn("Room image wasn`t found in file system");
-//        }
-//    }
-//
-//    public void sendBill(String to, Integer price){}
-//
+    public List<String> confirmBook(Integer apartmentStatusId) {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection conn = connectionPool.getConnection();
+        ApartmentStatusRepository apartmentStatusRepo = new ApartmentStatusRepository(conn);
+
+        List<String> status = new ArrayList<>();
+        ApartmentStatus apartmentStatus = new ApartmentStatus();
+        apartmentStatus.setStatus(Status.BOUGHT);
+        apartmentStatus.setPayTimeLimit(null);
+        apartmentStatus.setId(apartmentStatusId);
+        try {
+            apartmentStatusRepo.updateApartmentStatusPayTimeLimitAndStatus(apartmentStatus);
+        }catch (RepositoryException e){
+            connectionPool.close(conn);
+            status.add ("weCouldn'tFindSomething");
+            return status;
+        }
+        connectionPool.commit(conn);
+        connectionPool.close(conn);
+        return status;
+    }
+
+    public List<String> confirmRequest(Integer requestId) {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection conn = connectionPool.getConnection();
+        RequestRepository requestRepo = new RequestRepository(conn);
+        Request request = requestRepo.findRequestById(requestId);
+
+        List<String> status = new ArrayList<>();
+        request.getAnswerStatus().setStatus(Status.BOOKED);
+        request.getAnswerStatus().setPayTimeLimit(LocalDateTime.now().plusDays(2));
+        ApartmentStatusRepository apartmentStatusRepo = new ApartmentStatusRepository(conn);
+        apartmentStatusRepo.updateApartmentStatusPayTimeLimitAndStatus(request.getAnswerStatus());
+        requestRepo.deleteRequest(request);
+        connectionPool.commit(conn);
+        connectionPool.close(conn);
+        return status;
+    }
+
+    public List<String> answerRequest(Integer requestId, Integer apartmentId) {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection conn = connectionPool.getConnection();
+        RequestRepository requestRepo = new RequestRepository(conn);
+        Request request = requestRepo.findRequestById(requestId);
+
+        Pair<List<String>,ApartmentStatus> bookResult = book(request.getArrivalDay().toString(), request.getEndDay().toString(), request.getUserId(), apartmentId, true, conn);
+        List<String> status = bookResult.getFirst();
+        ApartmentStatus apartmentStatus = bookResult.getSecond();
+        if (status.size()==0){
+                request.setAnswerStatus(apartmentStatus);
+                requestRepo.updateRequestAnswerStatus(request);
+                connectionPool.commit(conn);
+        }
+        connectionPool.close(conn);
+        return status;
+    }
+
+    public List<String> updateApartment(Integer apartmentId, Integer price, Clazz clazz, Integer beds,Model model) {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection conn = connectionPool.getConnection();
+        ApartmentRepository apartmentRepo = new ApartmentRepository(conn);
+        Apartment apartment= apartmentRepo.findApartmentById(apartmentId);
+
+        Validator valid = new Validator();
+        List<String> status = valid.updateApartment(price,clazz,beds);
+        if (status.size()==0){
+            try {
+
+                Part part = model.request.getPart("image");
+                if (!(part.getSize() == 0)) {
+                    String fileName = path+"/src/main/webapp/static/img/room/room-"
+                        +apartment.getId()+'-'+apartment.getImages().size() + ".jpeg";
+                    part.write(fileName);
+                    apartment.getImages().add("room-" + apartment.getId().toString()+'-'+apartment.getImages().size() + ".jpeg");
+                }
+
+
+                apartment.setBeds(beds);
+                apartment.setClazz(clazz);
+                apartment.setPrice(price);
+                apartmentRepo.updateApartment(apartment);
+                connectionPool.commit(conn);
+            } catch (IOException | IllegalStateException | ServletException e) {
+                connectionPool.close(conn);
+                e.printStackTrace();
+                status.add("problemsWithFile");
+            }
+        }
+        connectionPool.close(conn);
+        return status;
+    }
+
+    public Apartment newApartment(){
+        Apartment apartment = new Apartment();
+        apartment.setPrice(9999).setBeds(1).setClazz(Clazz.LUX);
+        Connection conn = ConnectionPool.getInstance().getConnection();
+        ApartmentRepository apartmentRepo =new ApartmentRepository(conn);
+        apartmentRepo.insertApartment(apartment);
+        ConnectionPool.getInstance().commit(conn);
+        return apartment;
+    }
+
+    public void deleteApartment(Integer apartmentId) {
+        Connection conn = ConnectionPool.getInstance().getConnection();
+        ApartmentRepository apartmentRepo =new ApartmentRepository(conn);
+        Apartment apartment = apartmentRepo.findApartmentById(apartmentId);
+        List<String> images = apartment.getImages();
+        for (String image: images) {
+            File file = new File((path+"/src/main/webapp/static/img/room/" + image));
+            if (!file.delete())
+                logger.warn("Room image wasn`t found in file system");
+        }
+        apartmentRepo.deleteApartment(apartment);
+        ConnectionPool.getInstance().commit(conn);
+        ConnectionPool.getInstance().close(conn);
+    }
+
 
     public static class TimeInterval{
         private LocalDate arrivalDay;

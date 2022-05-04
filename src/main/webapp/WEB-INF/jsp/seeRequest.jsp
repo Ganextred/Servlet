@@ -50,6 +50,7 @@
     </sec:authorize>
 </header>
 <!--header end-->
+
 <div class="breadcrumb-section">
     <div class="container">
         <div class="row">
@@ -64,35 +65,39 @@
         </div>
     </div>
 </div>
+
 <!--Список комнат-->
 <section class="rooms-section spad">
+    <div>
+        <h3> ${lang.gL("requestWithParams")}  </h3>
+        <span> ${lang.gL("arrivalDay")}  </span>
+        <i> ${request.getArrivalDay()}  </i>
+        <span> ${lang.gL("endDay")}  </span>
+        <i> ${request.getEndDay()} </i>
+        <span> ${lang.gL("beds")}  </span>
+        <i> ${request.getBeds()}  </i>
+        <span> ${lang.gL("clazz")}  </span>
+        <i> ${request.getClazz()}  </i>
+        <p> ${request.getText()}   </p>
+    </div>
     <div class="container">
         <div>
             <p >${lang.gL("sort")}</p>
-            <form action="apartments/applySort" method="post" id="applySort">
-                <div>
-                    <label> ${lang.gL("arrivalDay")}</label><input type = "date" name="arrivalDay" required value="${arrivalDayD}">
-                    <label> ${lang.gL("endDay")}</label><input type = "date" name = "endDay"  value="${endDayD}" required>
-                </div>
+            <form action="seeRequest/applySort" method="post" id="applySort">
+                <input type="hidden" name ="request" value="${request.getId()}">
                 <c:forEach var="i" begin="0" end="2">
-                <label>
-                    <select name = "sortParams[]" >
-                        <option value="price"  ${sortParamsD[i] == 'price' ? 'selected' : ''} > ${lang.gL("price")} </option>
-                        <option value="beds" ${sortParamsD[i] == 'beds' ? 'selected' : ''}  > ${lang.gL("beds")}</option>
-                        <option value="clazz" ${sortParamsD[i] == 'clazz' ? 'selected' : ''} > ${lang.gL("clazz")} </option>
-                    </select>
-                    <select name = "orderParams[]" >
-                        <option value="true"  ${orderParamsD[i] == 'true' ? 'selected' : ''} >${lang.gL("asc")}</option>
-                        <option value="false" ${orderParamsD[i] == 'false' ? 'selected' : ''} > ${lang.gL("desc")}</option>
-                    </select>
-                </label>
+                    <label>
+                        <select name = "sortParams[]" >
+                            <option value="price"  ${sortParamsD[i] == 'price' ? 'selected' : ''} > ${lang.gL("price")} </option>
+                            <option value="beds" ${sortParamsD[i] == 'beds' ? 'selected' : ''}  > ${lang.gL("beds")}</option>
+                            <option value="clazz" ${sortParamsD[i] == 'clazz' ? 'selected' : ''} > ${lang.gL("clazz")} </option>
+                        </select>
+                        <select name = "orderParams[]" >
+                            <option value="true"  ${orderParamsD[i] == 'true' ? 'selected' : ''} >${lang.gL("asc")}</option>
+                            <option value="false" ${orderParamsD[i] == 'false' ? 'selected' : ''} > ${lang.gL("desc")}</option>
+                        </select>
+                    </label>
                 </c:forEach>
-                <div>
-                    <label>${lang.gL("showAvailable")}</label><input name = "AVAILABLE" type = "checkbox" <c:if test="${AVAILABLE}">checked</c:if> >
-                    <label>${lang.gL("showBooked")}</label><input name = "BOOKED" type = "checkbox"   <c:if test="${BOOKED}">checked</c:if> >
-                    <label>${lang.gL("showBought")}</label><input name = "BOUGHT" type = "checkbox"   <c:if test="${BOUGHT}">checked</c:if> >
-                    <label>${lang.gL("showInaccessible")}</label><input name = "INACCESSIBLE" type = "checkbox"  <c:if test="${INACCESSIBLE}">checked</c:if>>
-                </div>
                 <button  type="submit">${lang.gL("confirm")}"</button>
             </form>
         </div>
@@ -101,7 +106,7 @@
             <c:forEach var="apartment" items="${apartments}">
             <div class="col-lg-4 col-md-6">
                 <div class="room-item">
-                    <img src="../../static/img/room/${apartment.getImage()}" alt="img1">
+                    <img src="../../static/img/room/+${apartment.getImage()}" alt="img">
                     <div class="ri-text">
                         <h4>Premium King Room</h4>
                         <h3> ${apartment.getPrice()} <span>${lang.gL("pricePerNight")}</span></h3>
@@ -121,15 +126,19 @@
                             <c:param name="apartment" value="${apartment.getId()}"/>
                         </c:url>
                         <a href="${apartmentURL}" class="primary-btn">${lang.gL("moreDetails")}</a>
+                        <form action="answerRequest" method="post">
+                            <input type="hidden" value="${apartment.getId()}" name="apartment">
+                            <input type="hidden" value="${request.getId()}" name="request">
+                            <button type="submit"> ${lang.gL("offer")}</button>
+                        </form>
                     </div>
                 </div>
             </div>
             </c:forEach>
-
             <div class="col-lg-12">
                 <div class="room-pagination">
                     <c:if test="${page > 1}">
-                    <button type="submit" name="page" value="${page - 1}" form="applySort"> ${lang.gL("prevPage")} </button>
+                        <button type="submit" name="page" value="${page - 1}" form="applySort"> ${lang.gL("prevPage")} </button>
                     </c:if>
                     <button  type="submit"  name="page" value="${page + 1}" form="applySort">${lang.gL("nextPage")}</button>
                 </div>

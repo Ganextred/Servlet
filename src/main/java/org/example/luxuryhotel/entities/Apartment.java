@@ -1,6 +1,11 @@
 package org.example.luxuryhotel.entities;
 
+import org.example.luxuryhotel.application.model.repository.ApartmentRepository;
+import org.example.luxuryhotel.application.model.repository.RequestRepository;
+import org.example.luxuryhotel.framework.data.ConnectionPool;
+
 import java.io.File;
+import java.sql.Connection;
 import java.util.List;
 
 
@@ -78,7 +83,8 @@ public class Apartment {
         List<String> images = getImages();
         String image = null;
         for (String path : images){
-            File f = new File(new File("").getAbsolutePath() + "/src/main/resources/static/img/room/" + path);
+            File f = new File("C:/Users/Professional/IdeaProjects/HotelServlet/HotelServlet" +
+                    "/src/main/webapp/static/img/room/" + path);
             if(f.exists() && f.isFile()) {
                 image = path;
                 break;
@@ -87,6 +93,15 @@ public class Apartment {
         if (image == null)
             return "defaultRoom.jpg";
         return image;
+    }
+
+    public static Apartment ofId(Integer id){
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection conn = connectionPool.getConnection();
+        ApartmentRepository apartmentRepo = new ApartmentRepository(conn);
+        Apartment apartment= apartmentRepo.findApartmentById(id);
+        connectionPool.close(conn);
+        return apartment;
     }
 
 

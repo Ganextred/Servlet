@@ -81,4 +81,14 @@ public class User implements UserDetails {
         return getRoles();
     };
 
+    public boolean hasRole (String roleStr){
+        Role role;
+        try {
+            role = Role.valueOf(roleStr);
+        }catch (IllegalArgumentException e){
+            return false;
+        }
+        return roles.contains(role);
+    }
+
 }

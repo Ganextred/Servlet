@@ -26,7 +26,7 @@ public class AuthenticationFilter implements Filter {
         }else authorities = new HashSet<>(user.getAuthorities());
         if(SecurityManager.hasAccess(request, authorities)){
             filterChain.doFilter(request, response);
-        } else response.sendRedirect("/main/accessDenied");
+        } else response.sendRedirect("/main/login");
     }
 
     @Override

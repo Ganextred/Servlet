@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 public class CookieManager {
 
     public static Cookie findCookiesByName(String name, HttpServletRequest request){
+        if (request.getCookies() == null)
+            return null;
         for (Cookie cookie : request.getCookies()) {
             if (cookie.getName().equals(name))
                 return cookie;

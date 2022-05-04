@@ -1120,7 +1120,7 @@ you can use the generic selector below, but it's slower:
 }
 
 
-	.glyph {
+	.gLyph {
 		float: left;
 		text-align: center;
 		padding: .75em;
@@ -1128,16 +1128,16 @@ you can use the generic selector below, but it's slower:
 		width: 6em;
 text-shadow: none;
 	}
-        .glyph_big {
+        .gLyph_big {
         font-size: 128px;
         color: #59c5dc;
         float: left;
         margin-right: 20px;
         }
 
-        .glyph div { padding-bottom: 10px;}
+        .gLyph div { padding-bottom: 10px;}
 
-	.glyph input {
+	.gLyph input {
 		font-family: consolas, monospace;
 		font-size: 12px;
 		width: 100%;
@@ -1152,7 +1152,7 @@ text-shadow: none;
 		margin-left: auto;
 		margin-right: auto;
 	}
-	.glyph .fs1 {
+	.gLyph .fs1 {
 		font-size: 2em;
 	}
 

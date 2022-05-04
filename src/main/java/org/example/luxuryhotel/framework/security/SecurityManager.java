@@ -14,6 +14,14 @@ public class SecurityManager {
         session.setAttribute("user", user);
     }
 
+    public static User getUserFromSession(Model model){
+        HttpSession session = model.request.getSession();
+        return (User) session.getAttribute("user");
+    }
+    public static User getUserFromSession(HttpSession session){
+        return (User) session.getAttribute("user");
+    }
+
     public static boolean hasAccess(HttpServletRequest request, Set<GrantedAuthority> authorities) {
         AuthorityMapping authorityMapping = AuthorityMapping.getInstance();
         String path=request.getRequestURI();
@@ -29,4 +37,5 @@ public class SecurityManager {
                 return false;
         return true;
     }
+
 }
