@@ -92,7 +92,7 @@ public class ApartmentStatusRepository extends Repository {
         }
     }
 
-    List<ApartmentStatus> findApartmentStatusByApartmentId(Apartment apartment){
+    public List<ApartmentStatus> findApartmentStatusByApartmentId(Apartment apartment){
         try {
             PreparedStatement statement = connection.prepareStatement(findApartmentStatusByApartmentId);
             statement.setInt(1, apartment.getId());

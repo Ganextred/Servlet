@@ -22,6 +22,11 @@ import java.util.List;
 import static org.example.luxuryhotel.framework.Util.Converter.convert;
 import static org.example.luxuryhotel.framework.web.ViewResolver.processView;
 
+/**
+ * The class DispatcherServlet process all requests for /main/*
+ * It takes the path, search for corresponding controller, inject parameters
+ * and invoke right method.
+ */
 @WebServlet("/main/*")
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024 , // 1 MB
@@ -35,29 +40,21 @@ public class DispatcherServlet extends HttpServlet {
     public void init() {
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path=request.getRequestURI();
         Pair<Method,Object> pair=handlerMapping.getGet(path);
         Model model=new Model(request, response);
         RedirectAttributes rA = new RedirectAttributes();
         String view = doRequest(pair, model, rA);
-        try {
-            processView(view, model, rA);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
+        processView(view, model, rA);
     }
-    public void doPost(HttpServletRequest request, HttpServletResponse response) {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path=request.getRequestURI();
         Pair<Method,Object> pair=handlerMapping.getPost(path);
         Model model=new Model(request, response);
         RedirectAttributes rA = new RedirectAttributes();
         String view = doRequest(pair, model, rA);
-        try {
-            processView(view, model, rA);
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
-        }
+        processView(view, model, rA);
     }
     private String doRequest(Pair<Method, Object> pair, Model model, RedirectAttributes rA) {
         Method method = pair.getFirst();
@@ -103,6 +100,12 @@ public class DispatcherServlet extends HttpServlet {
         }
         return result.toArray();
     }
+
+    /**
+     * @param rp - RequestParam, object witch contains p
+     * @param data - String representation of value of parameter
+     * @return checks required and defaultValue constraints returns data or defaultValue or throws NullParamException
+     */
     private String checkDefaultAndRequired(RequestParam rp, String data) {
         if (rp.required() && rp.defaultValue().equals("\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n") && data == null)
             throw new NullParamException("param "+rp.name()+" not found");

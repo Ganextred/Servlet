@@ -52,4 +52,10 @@ public class LoginController {
             return ("redirect:/main/login");
         }
     }
+
+    @PostMapping(path = "/main/logout")
+    public String logout(Model model){
+        SecurityManager.logout(model);
+        return "redirect:/main/apartments";
+    }
 }

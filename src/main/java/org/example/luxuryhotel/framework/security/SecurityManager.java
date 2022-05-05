@@ -38,4 +38,8 @@ public class SecurityManager {
         return true;
     }
 
+    public static void logout(Model model) {
+        HttpSession session = model.request.getSession();
+        session.removeAttribute("user");
+    }
 }
