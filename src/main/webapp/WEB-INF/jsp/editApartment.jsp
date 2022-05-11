@@ -76,7 +76,7 @@
             <div class="col-lg-8">
                 <div class="room-details-item">
                     <c:forEach var="image" items="${apartment.getImages()}">
-                    <img src="../../static/img/room/${image}" alt="img">
+                    <img src="/upload/room/${image}" alt="img">
                     </c:forEach>
                     <div class="rd-text">
                         <div class="rd-title">

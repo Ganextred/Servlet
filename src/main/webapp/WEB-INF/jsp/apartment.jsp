@@ -75,7 +75,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="room-details-item">
-                    <img src="../../static/img/room/${apartment.getImage()}" alt="img">
+                    <img src="/upload/room/${apartment.getImage()}" alt="img">
                     <div class="rd-text">
                         <div class="rd-title">
                             <h3>Premium King Room</h3>

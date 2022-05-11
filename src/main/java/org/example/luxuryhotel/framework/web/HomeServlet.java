@@ -18,7 +18,6 @@ import static org.example.luxuryhotel.framework.web.ViewResolver.processView;
 @WebServlet("")
 public class HomeServlet extends HttpServlet {
     private final static Logger logger = Logger.getLogger(DispatcherServlet.class);
-    private final HandlerMapping  handlerMapping = HandlerMapping.getInstance();
 
     public void init() {
     }

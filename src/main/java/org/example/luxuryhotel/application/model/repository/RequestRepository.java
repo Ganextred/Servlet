@@ -27,7 +27,7 @@ public class RequestRepository extends Repository{
     private final static String deleteRequest = "DELETE FROM request r WHERE r.id = ?";
     private final static String deleteRequestByAnswerStatus_PayTimeLimitBeforeOrEndDayBefore =
             "DELETE FROM request r USING apartment_status a " +
-                    "WHERE r.answer_status_id = a.id AND (a.pay_time_limit <= ? OR a.end_day <= ?)";
+                    "WHERE (r.answer_status_id = a.id AND a.pay_time_limit <= ?) OR (r.end_day <= ?)";
 
     private List<Request> extractRequests(ApartmentStatus as, ResultSet rs) throws SQLException {
         List<Request> requests= new LinkedList<>();

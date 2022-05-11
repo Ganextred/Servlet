@@ -46,9 +46,10 @@ public class AdminController {
     @PreAuthorize("ADMIN")
     @PostMapping(path = "/main/admin/confirmStatus")
     public String confirmBook(@RequestParam(name = "status") Integer apartmentStatusId){
+        System.out.println("here");
         ConfirmBookCommand command= CommandFactory.getConfirmBookCommand(apartmentStatusId);
         command.execute();
-        return"redirect:/admin/adminPanel";
+        return"redirect:/main/admin/adminPanel";
     }
 
 
@@ -102,6 +103,7 @@ public class AdminController {
         AnswerRequestCommand command = CommandFactory.getAnswerRequestCommand(requestId, apartmentId);
         List<String> messages = command.execute();
         if (messages.size() != 0) {
+            ra.addAttributes("messages",messages);
             ra.addAttribute("request", requestId.toString());
             return "redirect:/main/admin/seeRequest";
         }

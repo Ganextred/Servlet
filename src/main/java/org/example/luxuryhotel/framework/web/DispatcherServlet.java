@@ -56,7 +56,16 @@ public class DispatcherServlet extends HttpServlet {
         String view = doRequest(pair, model, rA);
         processView(view, model, rA);
     }
-    private String doRequest(Pair<Method, Object> pair, Model model, RedirectAttributes rA) {
+
+    /**
+     * @param pair pair of responsible controller method and controller object to invoke this method
+     * @param model contains information about request and response, maps into @ RequestParam Model
+     * @param rA maps into @RequestParam RedirectAttributes
+     * @return name of view which can be used for future processing in ViewResolver
+     * @throws ServletException throws servlet exception when can't invoke responsible method
+     * @see RequestParam
+     */
+    private String doRequest(Pair<Method, Object> pair, Model model, RedirectAttributes rA) throws ServletException {
         Method method = pair.getFirst();
         Object controller= pair.getSecond();
         Object[] parameters= injectParameters(method, model, rA);
@@ -65,13 +74,23 @@ public class DispatcherServlet extends HttpServlet {
         } catch (IllegalAccessException | InvocationTargetException e) {
             logger.error("Cant invoke request to controller: "+ pair.getSecond(), e);
             e.printStackTrace();
-            return "error";
+            throw new ServletException(e);
         } catch (IllegalArgumentException e){
             logger.error("Problem with method invoke", e);
-            return "error";
+            throw new ServletException(e);
         }
     }
 
+
+    /**
+     * responsible for mapping parameters in array
+     *                    according to @RequestParam annotation for future method invocation
+     * @param method method in according which signature parameters will be mapping
+     * @param model contains information about request and response, maps into @RequestParam Model
+     * @param rA maps into @RequestParam RedirectAttributes
+     * @return returns array of parameters for according to method signature
+     * @see RequestParam
+     */
     private Object[] injectParameters(Method method, Model model, RedirectAttributes rA) {
         List<Object> result= new ArrayList<>();
         Parameter[] parameter = method.getParameters();
@@ -105,6 +124,7 @@ public class DispatcherServlet extends HttpServlet {
      * @param rp - RequestParam, object witch contains p
      * @param data - String representation of value of parameter
      * @return checks required and defaultValue constraints returns data or defaultValue or throws NullParamException
+     * @see RequestParam
      */
     private String checkDefaultAndRequired(RequestParam rp, String data) {
         if (rp.required() && rp.defaultValue().equals("\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n") && data == null)
@@ -113,6 +133,12 @@ public class DispatcherServlet extends HttpServlet {
             data = rp.defaultValue();
         return data;
     }
+    /**
+     * @param rp - RequestParam, object witch contains p
+     * @param data - String array representation of value of parameter
+     * @return checks required and defaultValue constraints returns data or defaultValue or throws NullParamException
+     * @see RequestParam
+     */
     private String[] checkDefaultAndRequiredForArr(RequestParam rp, String[] data) {
         if (data == null) {
             if (rp.required() && rp.defaultValue().equals("\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n"))

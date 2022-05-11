@@ -9,7 +9,7 @@ import org.example.luxuryhotel.framework.Util.Pair;
 import java.util.List;
 
 
-public class BookCommand implements  Command{
+public class BookCommand extends  Command{
 
 
     String arrivalDay; String endDay;
@@ -36,5 +36,10 @@ public class BookCommand implements  Command{
             save();
         return status;
     }
-    private void save(){}
+
+    @Override
+    protected void save() {
+
+    }
+
 }

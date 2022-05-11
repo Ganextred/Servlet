@@ -5,7 +5,7 @@ import org.example.luxuryhotel.application.model.service.ApartmentManager;
 
 import java.util.List;
 
-public class ConfirmRequestCommand implements Command {
+public class ConfirmRequestCommand extends Command {
     Integer request;
     List<String> status;
 
@@ -21,5 +21,9 @@ public class ConfirmRequestCommand implements Command {
             save();
         return status;
     }
-    private void save(){}
+
+    @Override
+    protected void save() {
+
+    }
 }

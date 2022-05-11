@@ -16,12 +16,6 @@ public class Model {
         this.response = response;
     }
 
-    public Object getAttributes(String name) {
-        if (attributes.containsKey(name))
-           return attributes.get(name);
-        return request.getParameter(name);
-    }
-
     public void addAttribute(String name, Object o) {
         attributes.put(name, o);
     }

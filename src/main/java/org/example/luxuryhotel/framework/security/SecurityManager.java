@@ -31,7 +31,7 @@ public class SecurityManager {
         else requiredAuthorities = authorityMapping.getGet(path);
         Set<String> t = new HashSet<>();
         for (GrantedAuthority ga: authorities)
-            t.add(ga.toString());
+            t.add(ga.getAuthority());
         for (String requiredAuthority : requiredAuthorities)
             if (!t.contains(requiredAuthority))
                 return false;

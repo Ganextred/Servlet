@@ -8,7 +8,7 @@ import org.example.luxuryhotel.entities.Request;
 
 import java.util.List;
 
-public class AnswerRequestCommand implements Command {
+public class AnswerRequestCommand extends Command {
     Integer request;
     Integer apartment;
     List<String> status;
@@ -27,5 +27,9 @@ public class AnswerRequestCommand implements Command {
             save();
         return status;
     }
-    private void save(){}
+
+    @Override
+    protected void save() {
+
+    }
 }

@@ -101,7 +101,7 @@
             <c:forEach var="apartment" items="${apartments}">
             <div class="col-lg-4 col-md-6">
                 <div class="room-item">
-                    <img src="../../static/img/room/${apartment.getImage()}" alt="img1">
+                    <img src="/upload/room/${apartment.getImage()}" alt="img1">
                     <div class="ri-text">
                         <h4>Premium King Room</h4>
                         <h3> ${apartment.getPrice()} <span>${lang.gL("pricePerNight")}</span></h3>

@@ -11,8 +11,8 @@ import java.util.Properties;
 import java.util.Stack;
 
 public class ConnectionPool {
-    private static final int INIT_CAPACITY = 5;
-    private static final int MAX_CAPACITY = 30;
+    public static final int INIT_CAPACITY = 5;
+    public static final int MAX_CAPACITY = 30;
     private static  String url;
     private static String user;
     private static String password;
@@ -40,9 +40,10 @@ public class ConnectionPool {
             return connection;
         }else if (given<MAX_CAPACITY){
             try {
-                Connection connection = connections.push(connections.push( DriverManager.getConnection(url, user, password)));
+                //Connection connection = connections.push(connections.push( DriverManager.getConnection(url, user, password)));
+                Connection connection = DriverManager.getConnection(url, user, password);
                 given++;
-                return connections.push(connections.push( DriverManager.getConnection(url, user, password)));
+                return connection;
             } catch (SQLException e) {
                 logger.error("Problem to get connection from DB");
                 e.printStackTrace();
@@ -61,9 +62,9 @@ public class ConnectionPool {
         try {
             connection.rollback();
         } catch (SQLException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
         }
-        if (connections.size()>INIT_CAPACITY) {
+        if (connections.size()>= INIT_CAPACITY) {
             try {
                 connection.close();
                 given--;
@@ -96,5 +97,9 @@ public class ConnectionPool {
             logger.error("Faille to commit connection", e);
             e.printStackTrace();
         }
+    }
+
+    public int getSize() {
+        return connections.size();
     }
 }

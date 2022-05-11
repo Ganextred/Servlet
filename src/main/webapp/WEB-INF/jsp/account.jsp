@@ -120,6 +120,7 @@
                     <div class="bi-text">
                         <div class="book-list">
                             <c:forEach var="bgStatus" items="${bgStatuses}">
+                            <div>
                                 <h6>${lang.gL("bookId")} </h6>
                                 <i> ${bgStatus.getId()} </i>
                                 <h6> ${lang.gL("arrivalDay")} </h6>
@@ -129,11 +130,12 @@
                                 <a href="/main/apartment?apartment=${bgStatus.getApartmentId().getId()}" class="btn btn-black"> ${lang.gL("see")} </a>
                             </div>
                             </c:forEach>
-                            <span> ${lang.gL("yourRooms")} </span>
+                            <span class="b-tag" > ${lang.gL("yourRooms")} </span>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
